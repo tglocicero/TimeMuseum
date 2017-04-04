@@ -13,7 +13,7 @@ AFRAME.registerComponent('cursor-listener', {
 			document.getElementById("myCursor").setAttribute('geometry', 'primitive:ring; radiusInner: 0.0025; radiusOuter: 0.00375; thetaStart: 0; thetaLength: 360;');
 			document.getElementById("myCursor").setAttribute('animation', '');
 		});
-		this.el.addEventListener('mouseenter', function (evt) {
+		this.el.addEventListener('fusing', function (evt) {
 			document.getElementById("myCursor").setAttribute('material', 'opacity', 1.0);
 			document.getElementById("myCursor").setAttribute('animation', 'property:geometry.thetaLength; dur: 1000; easing: easeInOutSine; from: 0; to: 360');
 		});
