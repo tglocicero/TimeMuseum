@@ -23,8 +23,9 @@
 			<a-asset-item src="resources/models/SeedPod.mtl" id="SeedPod-mtl" ></a-asset-item>
 		</a-assets>
 		<a-entity light="type: ambient; color: #CCC" intensity="3"></a-entity>
-		<a-entity id="camera">
-			<a-entity camera look-controls wasd-controls >
+		<!-- <a-entity id="camera"> -->
+			<!-- <a-entity camera look-controls wasd-controls > -->
+		<ar-camera>
 				<a-entity 
 				geometry="primitive: ring; radiusOuter: 0.15; radiusInner: 0.10;"
 				material="color: blue;"
@@ -47,8 +48,8 @@
 				from= "0.1 0.1 0.1"
 				to="1 1 1"
 				dur="200"></a-animation>	  		   
-			</a-entity>
-		</a-entity>
+			<!-- </a-entity> -->
+		</ar-camera>
 	</a-entity>
 
 	<a-entity id="sky">
