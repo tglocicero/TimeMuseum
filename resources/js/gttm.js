@@ -1,5 +1,8 @@
 // JavaScript Document
 
+// setup cursor
+document.getElementById("myCursor").setAttribute('animation', 'property:geometry.thetaLength; dur: 1000; easing: easeInOutSine; from: 0; to: 360');
+
 
 
 // This creates an event listener for box with ID "0" that causes the sky transparency to fade up to 100% over five seconds.

@@ -7,6 +7,8 @@
 	<script src="resources/js/build.js"></script>
 	<script src="resources/js/CSS3DArgonHUD.js"></script>
 	<script src="resources/js/CSS3DArgonRenderer.js"></script>
+	<script src="resources/js/aframe-look-at-component.js"></script>
+    <script src="resources/js/aframe-animation-component.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="resources/css/style.css">
 	<title>GA Tech Time Museum</title>
 </head>
@@ -26,14 +28,14 @@
 		<!-- <a-entity id="camera"> -->
 			<!-- <a-entity camera look-controls wasd-controls > -->
 		<ar-camera>
-				<a-entity 
-				geometry="primitive: ring; radiusOuter: 0.15; radiusInner: 0.10;"
-				material="color: blue;"
-				position="0 0 -1"
-				cursor="fuse: 1000;"
-				raycaster="objects: .clickable;">
+				<a-entity id="myCursor" cursor="fuse:true; fuse-timeout: 1000"
+                    position="0 0 -0.1"
+                    geometry="primitive:ring; radiusInner: 0.0025; radiusOuter: 0.00375; thetaStart: 0; thetaLength: 360;"
+                    scale="1 1 1"
+                    rotation="0 0 90"
+                    material="color: #6666FF; shader:flat;opacity:0.5;">
 
-				<a-animation begin="cursor-fusing"
+				<!-- <a-animation begin="cursor-fusing"
 				attribute="scale"
 				easing="ease-in"
 				fill="forwards"
@@ -47,7 +49,7 @@
 				fill="forwards"
 				from= "0.1 0.1 0.1"
 				to="1 1 1"
-				dur="200"></a-animation>	  		   
+				dur="200"></a-animation>	 -->  		   
 			<!-- </a-entity> -->
 		</ar-camera>
 	</a-entity>
