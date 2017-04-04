@@ -17,6 +17,7 @@ AFRAME.registerComponent('cursor-listener', {
 		});
 		this.el.addEventListener('mouseleave', function (evt) {
 			document.getElementById("myCursor").setAttribute('material', 'opacity', 0.8);
+			document.getElementById("myCursor").setAttribute('geometry', 'primitive:ring; radiusInner: 0.0025; radiusOuter: 0.00375; thetaStart: 0; thetaLength: 360;')
 			// document.getElementById("myCursor").setAttribute('scale', '5 5 5');
 			document.getElementById("myCursor").setAttribute('animation', '');
 			// document.querySelector('#description1-object').setAttribute("visible", "false");
