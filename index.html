@@ -33,23 +33,23 @@
                     geometry="primitive:ring; radiusInner: 0.0025; radiusOuter: 0.00375; thetaStart: 0; thetaLength: 360;"
                     scale="1 1 1"
                     rotation="0 0 90"
-                    material="color: #6666FF; shader:flat;opacity:0.5;">
+                    material="color: #6666FF; shader:flat;opacity:0.8;">
 
-				<!-- <a-animation begin="cursor-fusing"
-				attribute="scale"
-				easing="ease-in"
+				<a-animation begin="cursor-fusing"
+				attribute="geometry.thetaLength"
+				easing="ease-in-out-cubic"
 				fill="forwards"
-				from= "1 1 1"
-				to="0.1 0.1 0.1"
+				from= "360"
+				to="0"
 				dur="1000"></a-animation>
 
-				<a-animation begin="click"
+				<!-- <a-animation begin="click"
 				attribute="scale"
 				easing="ease-in"
 				fill="forwards"
 				from= "0.1 0.1 0.1"
 				to="1 1 1"
-				dur="200"></a-animation>	 -->  		   
+				dur="200"></a-animation> -->	  		   
 			<!-- </a-entity> -->
 		</ar-camera>
 	</a-entity>
