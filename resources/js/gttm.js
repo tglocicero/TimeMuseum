@@ -1,4 +1,9 @@
 // JavaScript Document
+function htmlToElement(html) {
+    var template = document.createElement('template');
+    template.innerHTML = html;
+    return template.content.firstChild;
+}
 
 // setup cursor
 AFRAME.registerComponent('cursor-listener', {
@@ -8,7 +13,7 @@ AFRAME.registerComponent('cursor-listener', {
 		});
 		this.el.addEventListener('mouseenter', function (evt) {
 			document.getElementById("myCursor").setAttribute('material', 'opacity', 1.0);
-			document.getElementById("myCursor").setAttribute('animation', 'property:geometry.thetaLength; dur: 1000; easing: easeInOutSine; from: 0; to: 360');
+			//document.getElementById("myCursor").setAttribute('animation', 'property:geometry.thetaLength; dur: 1000; easing: easeInOutSine; from: 0; to: 360');
 		});
 		this.el.addEventListener('mouseleave', function (evt) {
 			document.getElementById("myCursor").setAttribute('material', 'opacity', 0.8);
