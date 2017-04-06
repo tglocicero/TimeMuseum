@@ -26,27 +26,7 @@ AFRAME.registerComponent('cursor-listener', {
 });
 
 // BEGIN BLURB VIEWING DELICIOUSNESS
-AFRAME.registerComponent('blurbViewOpener', {
 
-	schema: {
-    	id_TitleCSS: {type: 'string'},
-    	id_BlurbCSS: {type: 'string'},
-    	positionString: {type: 'string'}
-  	},
-
-	init: function () {
-		this.el.addEventListener('mouseenter', function (evt) {
-			this.setAttribute('position', this.data.positionString);
-			var titleCSS = document.getElementById(this.data.id_TitleCSS);
-			titleCSS.setAttribute('visible', false);
-			var blurbCSS = document.getElementById(this.data.id_BlurbCSS);
-			blurbCSS.setAttribute('visible', true);
-		});
-		this.el.addEventListener('mouseleave', function (evt) {
-			this.setAttribute('material', 'opacity', 1.0);
-		});
-	}
-});
 
 AFRAME.registerComponent('blurbViewCloser', {
 
