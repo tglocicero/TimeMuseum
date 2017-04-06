@@ -24,6 +24,51 @@ AFRAME.registerComponent('cursor-listener', {
 		});
 	}
 });
+
+// BEGIN BLURB VIEWING DELICIOUSNESS
+AFRAME.registerComponent('cursor-listener-blurbViewOpener', {
+
+	schema: {
+    	id_TitleCSS: {type: 'string'},
+    	id_BlurbCSS: {type: 'string'},
+    	positionString: {type: 'string'}
+  	},
+
+	init: function () {
+		this.el.addEventListener('mouseenter', function (evt) {
+			this.setAttribute('position', this.data.positionString);
+			var titleCSS = document.getElementById(this.data.id_TitleCSS);
+			titleCSS.setAttribute('visible', false);
+			var blurbCSS = document.getElementById(this.data.id_BlurbCSS);
+			blurbCSS.setAttribute('visible', true);
+		});
+		this.el.addEventListener('mouseleave', function (evt) {
+			this.setAttribute('material', 'opacity', 1.0);
+		});
+	}
+});
+
+AFRAME.registerComponent('cursor-listener-blurbViewCloser', {
+
+	schema: {
+		id_Artifact: {type: 'string'},
+		id_TitleCSS: {type: 'string'},
+		positionString: {type: 'string'}
+	},
+
+	init: function () {
+		this.el.addEventListener('mouseleave', function (evt) {
+			var seed = document.getElementById('seedPod');
+			seedPod.setAttribute('position', this.data.positionString);
+			var titleCSS = document.getElementById('seedTitleCSS');
+			titleCSS.setAttribute('visible', true);
+			var blurbCSS = document.getElementById('seedBlurbCSS');
+			blurbCSS.setAttribute('visible', false);
+		});
+	}
+});
+// END BLURB VIEWING DELICIOUSNESS
+
 // document.getElementById("myCursor").setAttribute('animation', 'property:geometry.thetaLength; dur: 1000; easing: easeInOutSine; from: 0; to: 360');
 
 

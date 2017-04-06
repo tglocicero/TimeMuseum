@@ -9,6 +9,7 @@
 	<script src="resources/js/CSS3DArgonRenderer.js"></script>
 	<script src="resources/js/aframe-look-at-component.js"></script>
     <script src="resources/js/aframe-animation-component.min.js"></script>
+    <script src="resources/js/gttm.js"></script>
 	<link rel="stylesheet" type="text/css" href="resources/css/style.css">
 	<title>GA Tech Time Museum</title>
 </head>
@@ -92,14 +93,12 @@
 				</a-obj-model>
 			</a-entity>
 			<a-sphere class= "clickable" id="room" src ="#roomPano" radius="25" opacity="0" side="double">
-				<a-obj-model id= "seedPod" src="#SeedPod-obj" mtl="#SeedPod-mtl"  position="0 -2 -15" opacity="0"></a-obj-model>
+				<a-obj-model cursor-listener-blurbViewOpener id= "seedPod" src="#SeedPod-obj" mtl="#SeedPod-mtl"  position="0 -2 -15" opacity="0"></a-obj-model>
 			</a-sphere>
 		</a-entity>
 
 	</a-entity>
 
 </ar-scene>
-
-<script src="resources/js/gttm.js"></script>
 </body>
 </html>
