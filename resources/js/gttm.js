@@ -35,7 +35,6 @@ AFRAME.registerComponent('blurbViewOpener', {
   	},
 
 	init: function () {
-		console.log("this phone was updated.")
 		this.el.addEventListener('mouseenter', function (evt) {
 			this.setAttribute('position', this.data.positionString);
 			var titleCSS = document.getElementById(this.data.id_TitleCSS);
