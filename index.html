@@ -13,6 +13,29 @@
 	<title>GA Tech Time Museum</title>
 </head>
 
+<script>
+AFRAME.registerComponent('blurbViewOpener', {
+
+	schema: {
+    	id_TitleCSS: {type: 'string'},
+    	id_BlurbCSS: {type: 'string'},
+    	positionString: {type: 'string'}
+  	},
+
+	init: function () {
+		this.el.addEventListener('mouseenter', function (evt) {
+			this.setAttribute('position', this.data.positionString);
+			var titleCSS = document.getElementById(this.data.id_TitleCSS);
+			titleCSS.setAttribute('visible', false);
+			var blurbCSS = document.getElementById(this.data.id_BlurbCSS);
+			blurbCSS.setAttribute('visible', true);
+		});
+		this.el.addEventListener('mouseleave', function (evt) {
+			this.setAttribute('material', 'opacity', 1.0);
+		});
+	}
+});
+</script>
 
 <body>
 	<!-- Seed Card -->
@@ -113,7 +136,7 @@
 						<a-sphere position="0 0 5" radius=".03" color="#0000ff"></a-sphere> -->
 						
 						<a-obj-model id="seedPod" cursor-listener blurbViewOpener="id_titleCSS: seedTitleCSS; id_blurbCSS: seedBlurbCSS; position: 3 -1 -10; " src="#SeedPod-obj" mtl="#SeedPod-mtl" opacity="0"></a-obj-model>
-						<a-entity id="seedTitleCSS" css-object="div: #seedTitle" scale="0.1 0.1 0.1" rotation="0 0 0" position="0 0 0"></a-entity>  
+						<a-entity id="seedTitleCSS" css-object="div: #seedTitle" scale="0.1 0.1 0.1" rotation="0 0 0" position="0 0 2"></a-entity>  
       					<a-entity id="seedBlurbCSS" css-object="div: #seedBlurb" scale=".1 .1 .1" rotation="0 0 0" position="0 0 0" visible='false'></a-entity>
 					</a-entity>
 
