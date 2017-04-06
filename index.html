@@ -14,7 +14,7 @@
 </head>
 
 <script>
-AFRAME.registerComponent('blurbViewOpener', {
+AFRAME.registerComponent('blurb-view-opener', {
 
 	schema: {
     	id_TitleCSS: {type: 'string'},
@@ -137,7 +137,7 @@ AFRAME.registerComponent('blurbViewOpener', {
 						<a-sphere position="0 5 0" radius=".03" color="#00ff00"></a-sphere>
 						<a-sphere position="0 0 5" radius=".03" color="#0000ff"></a-sphere> -->
 						
-						<a-obj-model id="seedPod" cursor-listener blurbViewOpener="id_titleCSS: seedTitleCSS; id_blurbCSS: seedBlurbCSS; position: 3 -1 -10; " src="#SeedPod-obj" mtl="#SeedPod-mtl" opacity="0"></a-obj-model>
+						<a-obj-model id="seedPod" cursor-listener blurb-view-opener="id_titleCSS: seedTitleCSS; id_blurbCSS: seedBlurbCSS; position: 3 -1 -10; " src="#SeedPod-obj" mtl="#SeedPod-mtl" opacity="0"></a-obj-model>
 					</a-entity>
 
 				</a-sphere>

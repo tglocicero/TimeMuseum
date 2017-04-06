@@ -28,7 +28,7 @@ AFRAME.registerComponent('cursor-listener', {
 // BEGIN BLURB VIEWING DELICIOUSNESS
 
 
-AFRAME.registerComponent('blurbViewCloser', {
+AFRAME.registerComponent('blurb-view-closer', {
 
 	schema: {
 		id_Artifact: {type: 'string'},
