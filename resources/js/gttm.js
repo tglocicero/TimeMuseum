@@ -14,6 +14,7 @@ AFRAME.registerComponent('cursor-listener', {
 			document.getElementById("myCursor").setAttribute('animation', '');
 		});
 		this.el.addEventListener('fusing', function (evt) {
+			console.log("FUSING");
 			document.getElementById("myCursor").setAttribute('material', 'opacity', 0.2);
 			document.getElementById("myCursor").setAttribute('animation', 'property:geometry.thetaLength; dur: 1000; easing: easeInOutSine; from: 0; to: 360');
 		});
