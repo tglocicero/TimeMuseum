@@ -91,6 +91,7 @@ var moveHiddenPortal = function(){
 			"height":"1000"
 		});
 	}
+	console.log("Triggered!");
 }
 
 portal.addEventListener('click', function()
