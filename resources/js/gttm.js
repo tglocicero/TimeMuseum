@@ -14,7 +14,7 @@ AFRAME.registerComponent('cursor-listener', {
 			cursor.setAttribute('geometry', 'primitive:ring; radiusInner: 0.0025; radiusOuter: 0.00375; thetaStart: 0; thetaLength: 360;');
 			cursor.setAttribute('animation', '');
 		});
-		this.el.addEventListener('fusing', function (evt) {
+		this.el.addEventListener('mouseenter', function (evt) {
 			cursor.setAttribute('material', 'opacity', 0.2);
 			cursor.setAttribute('animation', 'property:geometry.thetaLength; dur: 1000; easing: easeInOutSine; from: 0; to: 360');
 		});
