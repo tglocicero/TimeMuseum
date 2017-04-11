@@ -95,6 +95,7 @@ portal.addEventListener('click', function()
 				"position":"0 5 0",
 				"height":"100"
 			});
+			console.log(portal.getAttribute("height"));
 		}, 8000);
 
 		//animation to pull user into room location
