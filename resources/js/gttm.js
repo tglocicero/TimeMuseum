@@ -22,6 +22,7 @@ AFRAME.registerComponent('cursor-listener', {
 			cursor.setAttribute('material', 'opacity', 0.8);
 			cursor.setAttribute('geometry', 'primitive:ring; radiusInner: 0.0025; radiusOuter: 0.00375; thetaStart: 0; thetaLength: 360;');
 			cursor.setAttribute('animation', '');
+			console.log(cursor.getAttribute('animation'));
 		});
 	}
 });
