@@ -81,6 +81,18 @@ function setAttributes(el, attrs) {
   }
 }
 
+var moveHiddenPortal = function(){
+	if(isOutside){
+
+	}
+	else{
+		setAttributes(portal, {
+			"position":"0 5 0",
+			"height":"100"
+		});
+	}
+}
+
 portal.addEventListener('click', function()
 {
 	if (isOutside){
@@ -90,13 +102,13 @@ portal.addEventListener('click', function()
 		isOutside = false;
 		document.querySelector('a-entity').flushToDOM(true); // what is this for? -Nate
 
-		setTimeout(function(){
-			setAttributes(portal, {
-				"position":"0 5 0",
-				"height":"100"
-			});
-			console.log(portal.getAttribute("height"));
-		}, 8000);
+		// setTimeout(function(){
+		// 	setAttributes(portal, {
+		// 		"position":"0 5 0",
+		// 		"height":"100"
+		// 	});
+		// 	console.log(portal.getAttribute("height"));
+		// }, 8000);
 
 		//animation to pull user into room location
 
@@ -109,7 +121,8 @@ portal.addEventListener('click', function()
 		// "delay": "200",
 		// "to": "0 -74.5 0"
 		// });
-		mysky.setAttribute("animation", "property: position; dur:5000; delay: 200; to: 0 -74.5 0");
+		mysky.setAttribute("animation", "property: position; dur:5000; delay: 200; to: 0 -74.5 0; ");
+		mysky.addEventListener("animationcomplete", moveHiddenPortal);
 
 		//animation to fade in the outside world panorama
 
