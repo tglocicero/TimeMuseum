@@ -31,11 +31,11 @@ AFRAME.registerComponent('cursor-listener', {
 
 AFRAME.registerComponent('blurb-view-closer', {
 
-	schema: {
-		id_Artifact: {type: 'string'},
-		id_TitleCSS: {type: 'string'},
-		positionString: {type: 'string'}
-	},
+	// schema: {
+	// 	id_Artifact: {type: 'string'},
+	// 	id_TitleCSS: {type: 'string'},
+	// 	positionString: {type: 'string'}
+	// },
 
 	init: function () {
 		this.el.addEventListener('mouseleave', function (evt) {
