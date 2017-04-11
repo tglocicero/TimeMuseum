@@ -88,7 +88,7 @@ var moveHiddenPortal = function(){
 	else{
 		setAttributes(portal, {
 			"position":"0 2 0",
-			"height":"10"
+			"height":"100"
 		});
 	}
 	console.log(room.getAttribute("position"))
