@@ -93,6 +93,7 @@ var moveHiddenPortal = function(){
 	}
 	console.log(room.getAttribute("position"))
 	console.log(portal.getAttribute("position"));
+	console.log("Yeah");
 }
 
 portal.addEventListener('click', function()
