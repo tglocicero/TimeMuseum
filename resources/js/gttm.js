@@ -93,7 +93,11 @@ portal.addEventListener('click', function()
 		document.querySelector('a-entity').flushToDOM(true); // what is this for? -Nate
 
 
-		portal.setAttribute("position", "0 0 0");
+		portal.setAttributes({
+			"position":"0 -2 0",
+			"height":"10"
+		});
+
 		//animation to pull user into room location
 
 
