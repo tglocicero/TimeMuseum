@@ -102,7 +102,7 @@ portal.addEventListener('click', function()
 		room.setAttribute('class',"unclickable");
 		isOutside = false;
 		document.querySelector('a-entity').flushToDOM(true); // what is this for? -Nate
-
+		console.log("AAAAAAA");
 		// setTimeout(function(){
 		// 	setAttributes(portal, {
 		// 		"position":"0 5 0",
