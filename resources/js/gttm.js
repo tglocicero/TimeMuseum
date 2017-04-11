@@ -88,7 +88,7 @@ var moveHiddenPortal = function(){
 	else{
 		setAttributes(portal, {
 			"position":"0 5 0",
-			"height":"100"
+			"height":"1000"
 		});
 	}
 }
