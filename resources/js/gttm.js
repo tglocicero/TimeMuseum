@@ -82,7 +82,7 @@ function setAttributes(el, attrs) {
 
 portal.addEventListener('click', function()
 {
-	"use strict";
+	console.log('TEST');
 	if (isOutside){
 		place="inside";
 
@@ -312,7 +312,7 @@ portal.addEventListener('click', function()
 
 	else{
 	//animation to pull user into room location
-		isOutside = false;
+		isOutside = true;
 
 		var zoomdown = document.createElement("a-animation");
 		setAttributes(zoomdown, {
