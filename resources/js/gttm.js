@@ -92,12 +92,12 @@ portal.addEventListener('click', function()
 		isOutside = false;
 		document.querySelector('a-entity').flushToDOM(true); // what is this for? -Nate
 
-		setTimeout(function(){
+		// setTimeout(function(){
 			setAttributes(portal, {
 				"position":"0 -1 0",
 				"height":"10"
 			});
-		}, 8000);
+		// }, 8000);
 
 		//animation to pull user into room location
 
