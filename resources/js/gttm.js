@@ -124,6 +124,7 @@ portal.addEventListener('click', function()
 		// });
 		mysky.setAttribute("animation", "property: position; dur:5000; delay: 200; to: 0 -74.5 0; ");
 		mysky.addEventListener("animationcomplete", moveHiddenPortal);
+		moveHiddenPortal();
 
 		//animation to fade in the outside world panorama
 
