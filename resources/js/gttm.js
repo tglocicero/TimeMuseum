@@ -101,14 +101,15 @@ portal.addEventListener('click', function()
 		//animation to pull user into room location
 
 
-		var zoomup = document.createElement("a-animation");
-		setAttributes(zoomup, {
-		"id": "zoomUp",
-		"attribute": "position",
-		"dur": "5000",
-		"delay": "200",
-		"to": "0 -74.5 0"
-		});
+		// var zoomup = document.createElement("a-animation");
+		// setAttributes(zoomup, {
+		// "id": "zoomUp",
+		// "attribute": "position",
+		// "dur": "5000",
+		// "delay": "200",
+		// "to": "0 -74.5 0"
+		// });
+		mysky.setAttribute("animation", "property: position; dur:5000; delay: 200; to: 0 -74.5 0");
 
 		//animation to fade in the outside world panorama
 
@@ -290,7 +291,7 @@ portal.addEventListener('click', function()
 
 
 		myQuad.appendChild(fadeUp);
-		mysky.appendChild(zoomup);
+		// mysky.appendChild(zoomup);
 		room.appendChild(roomFadeUp);
 		myOuter.appendChild(scaleOuterPortalDown);
 		myOuter.appendChild(moveOuterPortalDown);
