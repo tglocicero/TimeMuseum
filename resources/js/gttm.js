@@ -93,7 +93,7 @@ portal.addEventListener('click', function()
 		document.querySelector('a-entity').flushToDOM(true); // what is this for? -Nate
 
 		setTimeout(function(){
-			portal.setAttributes({
+			setAttributes(portal, {
 				"position":"0 -1 0",
 				"height":"10"
 			});
