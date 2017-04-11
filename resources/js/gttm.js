@@ -69,8 +69,10 @@ var myQuad = document.getElementById("quad");
 var myOuter = document.getElementById("outerRing");
 var myMiddle = document.getElementById("middleRing");
 var myInner = document.getElementById("innerRing");
-var backPortol = document.getElementById("backPortal");
+var portal = document.getElementById("portal");
 var seedPod = document.getElementById("seedPod");
+
+var isOutside = true;
 
 function setAttributes(el, attrs) {
   for(var key in attrs) {
@@ -78,444 +80,446 @@ function setAttributes(el, attrs) {
   }
 }
 
-room.addEventListener('click', function()
+portal.addEventListener('click', function()
 {
 	"use strict";
-	if (place==="outside"){
+	if (isOutside){
 		place="inside";
 
-	room.setAttribute('class',"unclickable");
-	document.querySelector('a-entity').flushToDOM(true);
+		room.setAttribute('class',"unclickable");
+		isOutside = false;
+		document.querySelector('a-entity').flushToDOM(true); // what is this for? -Nate
 
-	//animation to pull user into room location
+		//animation to pull user into room location
 
 
 		var zoomup = document.createElement("a-animation");
 		setAttributes(zoomup, {
-	  "id": "zoomUp",
-	  "attribute": "position",
-	  "dur": "5000",
+		"id": "zoomUp",
+		"attribute": "position",
+		"dur": "5000",
 		"delay": "200",
 		"to": "0 -74.5 0"
-	});
+		});
 
-	//animation to fade in the outside world panorama
-
-
-	var fadeUp = document.createElement("a-animation");
-	setAttributes(fadeUp, {
-	"id": "zoomUp",
-	"attribute": "opacity",
-	"dur": "200",
-	"to": "100"
-});
-
-	//animatioin to fade in the room panorama
+		//animation to fade in the outside world panorama
 
 
-	var roomFadeUp = document.createElement("a-animation");
-	setAttributes(roomFadeUp, {
-	"attribute": "opacity",
-	"dur": "200",
-	"delay": "3300",
-	"to": "1"
-});
+		var fadeUp = document.createElement("a-animation");
+		setAttributes(fadeUp, {
+		"id": "zoomUp",
+		"attribute": "opacity",
+		"dur": "200",
+		"to": "100"
+		});
 
-	//fades seed up when entering room
-
-
-
-	var fadeSeedUp = document.createElement("a-animation");
-	setAttributes(fadeSeedUp, {
-	"attribute": "opacity",
-	"dur": "200",
-	"delay": "3300",
-	"to": "1"
-	});
+		//animatioin to fade in the room panorama
 
 
-	// animation to move portal down when entering room
+		var roomFadeUp = document.createElement("a-animation");
+		setAttributes(roomFadeUp, {
+		"attribute": "opacity",
+		"dur": "200",
+		"delay": "3300",
+		"to": "1"
+		});
 
-	var fadeOuterPortalOutUp = document.createElement("a-animation");
-	setAttributes(fadeOuterPortalOutUp, {
-	"attribute": "opacity",
-	"dur": "200",
-	"delay": "3300",
-	"to": "0"
-	});
-
-
-	var fadeMiddlePortalOut = document.createElement("a-animation");
-	setAttributes(fadeMiddlePortalOut, {
-	"attribute": "opacity",
-	"dur": "200",
-	"delay": "3300",
-	"to": "0"
-	});
-
-
-	var fadeInnerPortalOut = document.createElement("a-animation");
-	setAttributes(fadeInnerPortalOut, {
-	"attribute": "opacity",
-	"dur": "200",
-	"delay": "3300",
-	"to": "0"
-	});
-
-	var fadeOuterPortalUp = document.createElement("a-animation");
-	setAttributes(fadeOuterPortalUp, {
-	"attribute": "opacity",
-	"dur": "200",
-	"delay": "5000",
-	"to": "1"
-	});
+		//fades seed up when entering room
 
 
 
-	var fadeMiddlePortalUp = document.createElement("a-animation");
-	setAttributes(fadeMiddlePortalUp, {
-	"attribute": "opacity",
-	"dur": "200",
-	"delay": "5000",
-	"to": "1"
-	});
+		var fadeSeedUp = document.createElement("a-animation");
+		setAttributes(fadeSeedUp, {
+		"attribute": "opacity",
+		"dur": "200",
+		"delay": "3300",
+		"to": "1"
+		});
 
 
-	var fadeInnerPortalUp = document.createElement("a-animation");
-	setAttributes(fadeInnerPortalUp, {
-	"attribute": "opacity",
-	"dur": "200",
-	"delay": "5000",
-	"to": "1"
-	});
+		// animation to move portal down when entering room
+
+		var fadeOuterPortalOutUp = document.createElement("a-animation");
+		setAttributes(fadeOuterPortalOutUp, {
+		"attribute": "opacity",
+		"dur": "200",
+		"delay": "3300",
+		"to": "0"
+		});
 
 
-
-	var scaleOuterPortalDown = document.createElement("a-animation");
-	setAttributes(scaleOuterPortalDown, {
-	"attribute": "scale",
-	"dur": "200",
-	"delay": "3300",
-	"to": "0.5 0.5 0.5"
-	});
-
-
-	var scaleMiddlePortalDown = document.createElement("a-animation");
-	setAttributes(scaleMiddlePortalDown, {
-	"attribute": "scale",
-	"dur": "200",
-	"delay": "3300",
-	"to": "0.5 0.5 0.5"
-	});
+		var fadeMiddlePortalOut = document.createElement("a-animation");
+		setAttributes(fadeMiddlePortalOut, {
+		"attribute": "opacity",
+		"dur": "200",
+		"delay": "3300",
+		"to": "0"
+		});
 
 
+		var fadeInnerPortalOut = document.createElement("a-animation");
+		setAttributes(fadeInnerPortalOut, {
+		"attribute": "opacity",
+		"dur": "200",
+		"delay": "3300",
+		"to": "0"
+		});
 
-	var scaleInnerPortalDown = document.createElement("a-animation");
-	setAttributes(scaleInnerPortalDown, {
-	"attribute": "scale",
-	"dur": "200",
-	"delay": "3300",
-	"to": "0.5 0.5 0.5"
-	});
-
-
-	//Animation to scale portal for being inside room
+		var fadeOuterPortalUp = document.createElement("a-animation");
+		setAttributes(fadeOuterPortalUp, {
+		"attribute": "opacity",
+		"dur": "200",
+		"delay": "5000",
+		"to": "1"
+		});
 
 
 
-	var moveOuterPortalDown = document.createElement("a-animation");
-	setAttributes(moveOuterPortalDown, {
-	"attribute": "position",
-	"dur": "200",
-	"delay": "3300",
-	"to": "0 -3 0"
-	});
+		var fadeMiddlePortalUp = document.createElement("a-animation");
+		setAttributes(fadeMiddlePortalUp, {
+		"attribute": "opacity",
+		"dur": "200",
+		"delay": "5000",
+		"to": "1"
+		});
+
+
+		var fadeInnerPortalUp = document.createElement("a-animation");
+		setAttributes(fadeInnerPortalUp, {
+		"attribute": "opacity",
+		"dur": "200",
+		"delay": "5000",
+		"to": "1"
+		});
 
 
 
-	var moveMiddlePortalDown = document.createElement("a-animation");
-	setAttributes(moveMiddlePortalDown, {
-	"attribute": "position",
-	"dur": "200",
-	"delay": "3300",
-	"to": "0 -3 0"
-	});
-
-	var moveInnerPortalDown = document.createElement("a-animation");
-	setAttributes(moveInnerPortalDown, {
-	"attribute": "position",
-	"dur": "200",
-	"delay": "3300",
-	"to": "0 -3 0"
-	});
+		var scaleOuterPortalDown = document.createElement("a-animation");
+		setAttributes(scaleOuterPortalDown, {
+		"attribute": "scale",
+		"dur": "200",
+		"delay": "3300",
+		"to": "0.5 0.5 0.5"
+		});
 
 
-
-	var changeOuterMaterial = document.createElement("a-animation");
-	setAttributes(changeOuterMaterial, {
-	"attribute": "mtl",
-	"dur": "200",
-	"delay": "3800",
-	"to": "white"
-	});
-
-	var changeMiddleMaterial = document.createElement("a-animation");
-	setAttributes(changeMiddleMaterial, {
-	"attribute": "mtl",
-	"dur": "200",
-	"delay": "3800",
-	"to": "white"
-	});
-
-
-	var changeInnerMaterial = document.createElement("a-animation");
-	setAttributes(changeInnerMaterial, {
-	"attribute": "mtl",
-	"dur": "200",
-	"delay": "3800",
-	"to": "white"
-	});
+		var scaleMiddlePortalDown = document.createElement("a-animation");
+		setAttributes(scaleMiddlePortalDown, {
+		"attribute": "scale",
+		"dur": "200",
+		"delay": "3300",
+		"to": "0.5 0.5 0.5"
+		});
 
 
 
-	myQuad.appendChild(fadeUp);
-	mysky.appendChild(zoomup);
-	room.appendChild(roomFadeUp);
-	myOuter.appendChild(scaleOuterPortalDown);
-	myOuter.appendChild(moveOuterPortalDown);
-	myMiddle.appendChild(scaleMiddlePortalDown);
-	myMiddle.appendChild(moveMiddlePortalDown);
-	myInner.appendChild(scaleInnerPortalDown);
-	myInner.appendChild(moveInnerPortalDown);
-	myOuter.appendChild(changeOuterMaterial);
-	myMiddle.appendChild(changeMiddleMaterial);
-	myInner.appendChild(changeInnerMaterial);
-	myOuter.appendChild(fadeOuterPortalOut);
-	myMiddle.appendChild(fadeMiddlePortalOut);
-	myInner.appendChild(fadeInnerPortalOut);
-	myOuter.appendChild(fadeOuterPortalUp);
-	myMiddle.appendChild(fadeMiddlePortalUp);
-	myInner.appendChild(fadeInnerPortalUp);
-	seedPod.appendChild(fadeSeedUp);
+		var scaleInnerPortalDown = document.createElement("a-animation");
+		setAttributes(scaleInnerPortalDown, {
+		"attribute": "scale",
+		"dur": "200",
+		"delay": "3300",
+		"to": "0.5 0.5 0.5"
+		});
+
+
+		//Animation to scale portal for being inside room
+
+
+
+		var moveOuterPortalDown = document.createElement("a-animation");
+		setAttributes(moveOuterPortalDown, {
+		"attribute": "position",
+		"dur": "200",
+		"delay": "3300",
+		"to": "0 -3 0"
+		});
+
+
+
+		var moveMiddlePortalDown = document.createElement("a-animation");
+		setAttributes(moveMiddlePortalDown, {
+		"attribute": "position",
+		"dur": "200",
+		"delay": "3300",
+		"to": "0 -3 0"
+		});
+
+		var moveInnerPortalDown = document.createElement("a-animation");
+		setAttributes(moveInnerPortalDown, {
+		"attribute": "position",
+		"dur": "200",
+		"delay": "3300",
+		"to": "0 -3 0"
+		});
+
+
+
+		var changeOuterMaterial = document.createElement("a-animation");
+		setAttributes(changeOuterMaterial, {
+		"attribute": "mtl",
+		"dur": "200",
+		"delay": "3800",
+		"to": "white"
+		});
+
+		var changeMiddleMaterial = document.createElement("a-animation");
+		setAttributes(changeMiddleMaterial, {
+		"attribute": "mtl",
+		"dur": "200",
+		"delay": "3800",
+		"to": "white"
+		});
+
+
+		var changeInnerMaterial = document.createElement("a-animation");
+		setAttributes(changeInnerMaterial, {
+		"attribute": "mtl",
+		"dur": "200",
+		"delay": "3800",
+		"to": "white"
+		});
+
+
+
+		myQuad.appendChild(fadeUp);
+		mysky.appendChild(zoomup);
+		room.appendChild(roomFadeUp);
+		myOuter.appendChild(scaleOuterPortalDown);
+		myOuter.appendChild(moveOuterPortalDown);
+		myMiddle.appendChild(scaleMiddlePortalDown);
+		myMiddle.appendChild(moveMiddlePortalDown);
+		myInner.appendChild(scaleInnerPortalDown);
+		myInner.appendChild(moveInnerPortalDown);
+		myOuter.appendChild(changeOuterMaterial);
+		myMiddle.appendChild(changeMiddleMaterial);
+		myInner.appendChild(changeInnerMaterial);
+		myOuter.appendChild(fadeOuterPortalOut);
+		myMiddle.appendChild(fadeMiddlePortalOut);
+		myInner.appendChild(fadeInnerPortalOut);
+		myOuter.appendChild(fadeOuterPortalUp);
+		myMiddle.appendChild(fadeMiddlePortalUp);
+		myInner.appendChild(fadeInnerPortalUp);
+		seedPod.appendChild(fadeSeedUp);
 
 	}
 
-});
+// });
 
 
-backPortol.addEventListener('click',function(){
+// backPortol.addEventListener('click',function(){
 
-	"use strict";
+// 	"use strict";
 
-
+	else{
 	//animation to pull user into room location
+		isOutside = false;
 
+		var zoomdown = document.createElement("a-animation");
+		setAttributes(zoomdown, {
+		"id": "zoomUp",
+		"attribute": "position",
+		"dur": "5000",
+		"delay": "200",
+		"to": "0 0 0"
+		});
 
-  var zoomdown = document.createElement("a-animation");
-  setAttributes(zoomdown, {
-  "id": "zoomUp",
-  "attribute": "position",
-  "dur": "5000",
-  "delay": "200",
-  "to": "0 0 0"
-});
-
-	//animation to fade out the outside world panorama once you land back on earth
-
-
-
-  var fadeUp = document.createElement("a-animation");
-  setAttributes(fadeUp, {
-  "id": "zoomUp",
-  "attribute": "opacity",
-  "dur": "4000",
-  "delay": "200",
-  "to": "0"
-});
-
-	//animatioin to fade out the room panorama
-
-
-  var roomFadeOut = document.createElement("a-animation");
-  setAttributes(roomFadeOut, {
-  "attribute": "opacity",
-  "dur": "200",
-  "delay": "3300",
-  "to": "0"
-  });
-
-
-  var fadeSeedDown = document.createElement("a-animation");
-  setAttributes(fadeSeedDown, {
-  "attribute": "opacity",
-  "dur": "200",
-  "delay": "1000",
-  "to": "0"
-  });
-
-
-	// animation to move portal down when entering room
-  var fadeOuterPortalOut = document.createElement("a-animation");
-  setAttributes(fadeOuterPortalOut, {
-  "attribute": "opacity",
-  "dur": "200",
-  "delay": "3300",
-  "to": "1"
-  });
-
-
-  var fadeMiddlePortalOut = document.createElement("a-animation");
-  setAttributes(fadeMiddlePortalOut, {
-  "attribute": "opacity",
-  "dur": "200",
-  "delay": "3300",
-  "to": "1"
-  });
-
-
-  var fadeInnerPortalOut = document.createElement("a-animation");
-  setAttributes(fadeInnerPortalOut, {
-  "attribute": "opacity",
-  "dur": "200",
-  "delay": "3300",
-  "to": "1"
-  });
-
-
-  var fadeOuterPortalUp = document.createElement("a-animation");
-  setAttributes(fadeOuterPortalUp, {
-  "attribute": "opacity",
-  "dur": "200",
-  "delay": "5000",
-  "to": "1"
-  });
-
-
-  var fadeMiddlePortalUp = document.createElement("a-animation");
-  setAttributes(fadeMiddlePortalUp, {
-  "attribute": "opacity",
-  "dur": "200",
-  "delay": "5000",
-  "to": "1"
-  });
-
-  var fadeInnerPortalUp = document.createElement("a-animation");
-  setAttributes(fadeInnerPortalUp, {
-  "attribute": "opacity",
-  "dur": "200",
-  "delay": "5000",
-  "to": "1"
-  });
-
-
-  var scaleOuterPortalUp = document.createElement("a-animation");
-  setAttributes(scaleOuterPortalUp, {
-  "attribute": "scale",
-  "dur": "200",
-  "delay": "3300",
-  "to": "10 10 10"
-  });
-
-
-  var scaleMiddlePortalUp = document.createElement("a-animation");
-  setAttributes(scaleMiddlePortalUp, {
-  "attribute": "scale",
-  "dur": "200",
-  "delay": "3300",
-  "to": "10 10 10"
-  });
+		//animation to fade out the outside world panorama once you land back on earth
 
 
 
-  var scaleInnerPortalUp = document.createElement("a-animation");
-  setAttributes(scaleInnerPortalUp, {
-  "attribute": "scale",
-  "dur": "200",
-  "delay": "3300",
-  "to": "10 10 10"
-  });
+		var fadeUp = document.createElement("a-animation");
+		setAttributes(fadeUp, {
+		"id": "zoomUp",
+		"attribute": "opacity",
+		"dur": "4000",
+		"delay": "200",
+		"to": "0"
+		});
+
+		//animatioin to fade out the room panorama
 
 
-	//Animation to scale portal for being inside room
+		var roomFadeOut = document.createElement("a-animation");
+		setAttributes(roomFadeOut, {
+		"attribute": "opacity",
+		"dur": "200",
+		"delay": "3300",
+		"to": "0"
+		});
 
 
-  var moveOuterPortalUp = document.createElement("a-animation");
-  setAttributes(moveOuterPortalUp, {
-  "attribute": "position",
-  "dur": "200",
-  "delay": "3300",
-  "to": "0 0 0"
-  });
+		var fadeSeedDown = document.createElement("a-animation");
+		setAttributes(fadeSeedDown, {
+		"attribute": "opacity",
+		"dur": "200",
+		"delay": "1000",
+		"to": "0"
+		});
 
 
-  var moveMiddlePortalUp = document.createElement("a-animation");
-  setAttributes(moveMiddlePortalUp, {
-  "attribute": "position",
-  "dur": "200",
-  "delay": "3300",
-  "to": "0 0 0"
-  });
+		// animation to move portal down when entering room
+		var fadeOuterPortalOut = document.createElement("a-animation");
+		setAttributes(fadeOuterPortalOut, {
+		"attribute": "opacity",
+		"dur": "200",
+		"delay": "3300",
+		"to": "1"
+		});
 
 
-  var moveInnerPortalUp = document.createElement("a-animation");
-  setAttributes(moveInnerPortalUp, {
-  "attribute": "position",
-  "dur": "200",
-  "delay": "3300",
-  "to": "0 0 0"
-  });
+		var fadeMiddlePortalOut = document.createElement("a-animation");
+		setAttributes(fadeMiddlePortalOut, {
+		"attribute": "opacity",
+		"dur": "200",
+		"delay": "3300",
+		"to": "1"
+		});
 
 
-  var changeOuterMaterial = document.createElement("a-animation");
-  setAttributes(changeOuterMaterial, {
-  "attribute": "mtl",
-  "dur": "200",
-  "delay": "3800",
-  "to": "#74FF31"
-  });
+		var fadeInnerPortalOut = document.createElement("a-animation");
+		setAttributes(fadeInnerPortalOut, {
+		"attribute": "opacity",
+		"dur": "200",
+		"delay": "3300",
+		"to": "1"
+		});
 
 
-  var changeMiddleMaterial = document.createElement("a-animation");
-  setAttributes(changeMiddleMaterial, {
-  "attribute": "mtl",
-  "dur": "200",
-  "delay": "3800",
-  "to": "#74FF31"
-  });
+		var fadeOuterPortalUp = document.createElement("a-animation");
+		setAttributes(fadeOuterPortalUp, {
+		"attribute": "opacity",
+		"dur": "200",
+		"delay": "5000",
+		"to": "1"
+		});
 
 
-  var changeInnerMaterial = document.createElement("a-animation");
-  setAttributes(changeInnerMaterial, {
-  "attribute": "mtl",
-  "dur": "200",
-  "delay": "3800",
-  "to": "#74FF31"
-  });
+		var fadeMiddlePortalUp = document.createElement("a-animation");
+		setAttributes(fadeMiddlePortalUp, {
+		"attribute": "opacity",
+		"dur": "200",
+		"delay": "5000",
+		"to": "1"
+		});
+
+		var fadeInnerPortalUp = document.createElement("a-animation");
+		setAttributes(fadeInnerPortalUp, {
+		"attribute": "opacity",
+		"dur": "200",
+		"delay": "5000",
+		"to": "1"
+		});
+
+
+		var scaleOuterPortalUp = document.createElement("a-animation");
+		setAttributes(scaleOuterPortalUp, {
+		"attribute": "scale",
+		"dur": "200",
+		"delay": "3300",
+		"to": "10 10 10"
+		});
+
+
+		var scaleMiddlePortalUp = document.createElement("a-animation");
+		setAttributes(scaleMiddlePortalUp, {
+		"attribute": "scale",
+		"dur": "200",
+		"delay": "3300",
+		"to": "10 10 10"
+		});
+
+
+
+		var scaleInnerPortalUp = document.createElement("a-animation");
+		setAttributes(scaleInnerPortalUp, {
+		"attribute": "scale",
+		"dur": "200",
+		"delay": "3300",
+		"to": "10 10 10"
+		});
+
+
+		//Animation to scale portal for being inside room
+
+
+		var moveOuterPortalUp = document.createElement("a-animation");
+		setAttributes(moveOuterPortalUp, {
+		"attribute": "position",
+		"dur": "200",
+		"delay": "3300",
+		"to": "0 0 0"
+		});
+
+
+		var moveMiddlePortalUp = document.createElement("a-animation");
+		setAttributes(moveMiddlePortalUp, {
+		"attribute": "position",
+		"dur": "200",
+		"delay": "3300",
+		"to": "0 0 0"
+		});
+
+
+		var moveInnerPortalUp = document.createElement("a-animation");
+		setAttributes(moveInnerPortalUp, {
+		"attribute": "position",
+		"dur": "200",
+		"delay": "3300",
+		"to": "0 0 0"
+		});
+
+
+		var changeOuterMaterial = document.createElement("a-animation");
+		setAttributes(changeOuterMaterial, {
+		"attribute": "mtl",
+		"dur": "200",
+		"delay": "3800",
+		"to": "#74FF31"
+		});
+
+
+		var changeMiddleMaterial = document.createElement("a-animation");
+		setAttributes(changeMiddleMaterial, {
+		"attribute": "mtl",
+		"dur": "200",
+		"delay": "3800",
+		"to": "#74FF31"
+		});
+
+
+		var changeInnerMaterial = document.createElement("a-animation");
+		setAttributes(changeInnerMaterial, {
+		"attribute": "mtl",
+		"dur": "200",
+		"delay": "3800",
+		"to": "#74FF31"
+		});
 
 
 
 
 
 
-	myQuad.appendChild(fadeUp);
-	mysky.appendChild(zoomdown);
-	room.appendChild(roomFadeOut);
-	myOuter.appendChild(scaleOuterPortalUp);
-	myOuter.appendChild(moveOuterPortalUp);
-	myMiddle.appendChild(scaleMiddlePortalUp);
-	myMiddle.appendChild(moveMiddlePortalUp);
-	myInner.appendChild(scaleInnerPortalUp);
-	myInner.appendChild(moveInnerPortalUp);
-	myOuter.appendChild(changeOuterMaterial);
-	myMiddle.appendChild(changeMiddleMaterial);
-	myInner.appendChild(changeInnerMaterial);
-	myOuter.appendChild(fadeOuterPortalOut);
-	myMiddle.appendChild(fadeMiddlePortalOut);
-	myInner.appendChild(fadeInnerPortalOut);
-	myOuter.appendChild(fadeOuterPortalUp);
-	myMiddle.appendChild(fadeMiddlePortalUp);
-	myInner.appendChild(fadeInnerPortalUp);
-	seedPod.appendChild(fadeSeedDown);
+		myQuad.appendChild(fadeUp);
+		mysky.appendChild(zoomdown);
+		room.appendChild(roomFadeOut);
+		myOuter.appendChild(scaleOuterPortalUp);
+		myOuter.appendChild(moveOuterPortalUp);
+		myMiddle.appendChild(scaleMiddlePortalUp);
+		myMiddle.appendChild(moveMiddlePortalUp);
+		myInner.appendChild(scaleInnerPortalUp);
+		myInner.appendChild(moveInnerPortalUp);
+		myOuter.appendChild(changeOuterMaterial);
+		myMiddle.appendChild(changeMiddleMaterial);
+		myInner.appendChild(changeInnerMaterial);
+		myOuter.appendChild(fadeOuterPortalOut);
+		myMiddle.appendChild(fadeMiddlePortalOut);
+		myInner.appendChild(fadeInnerPortalOut);
+		myOuter.appendChild(fadeOuterPortalUp);
+		myMiddle.appendChild(fadeMiddlePortalUp);
+		myInner.appendChild(fadeInnerPortalUp);
+		seedPod.appendChild(fadeSeedDown);
+	}
 
 });
 
