@@ -92,6 +92,8 @@ portal.addEventListener('click', function()
 		isOutside = false;
 		document.querySelector('a-entity').flushToDOM(true); // what is this for? -Nate
 
+
+		portal.setAttribute("height", "80")
 		//animation to pull user into room location
 
 
