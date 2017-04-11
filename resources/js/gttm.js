@@ -21,8 +21,7 @@ AFRAME.registerComponent('cursor-listener', {
 		this.el.addEventListener('mouseleave', function (evt) {
 			cursor.setAttribute('material', 'opacity', 0.8);
 			cursor.setAttribute('geometry', 'primitive:ring; radiusInner: 0.0025; radiusOuter: 0.00375; thetaStart: 0; thetaLength: 360;');
-			cursor.setAttribute('animation', '');
-			console.log(cursor.getAttribute('animation'));
+			// cursor.setAttribute('animation', '');
 		});
 	}
 });
@@ -84,7 +83,6 @@ function setAttributes(el, attrs) {
 
 portal.addEventListener('click', function()
 {
-	console.log('TEST');
 	if (isOutside){
 		place="inside";
 
