@@ -94,7 +94,7 @@ portal.addEventListener('click', function()
 
 		setTimeout(function(){
 			portal.setAttributes({
-				// "position":"0 0 0",
+				"position":"0 10 0",
 				"height":"10"
 			});
 		}, 8000);
