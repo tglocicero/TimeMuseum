@@ -61,7 +61,7 @@ AFRAME.registerComponent('blurb-view-closer', {
 // This creates an event listener for box with ID "0" that causes the sky transparency to fade up to 100% over five seconds.
 
 
-var place = "outside";
+// var place = "outside";
 
 
 var room = document.getElementById("room");
@@ -97,7 +97,7 @@ var moveHiddenPortal = function(){
 portal.addEventListener('click', function()
 {
 	if (isOutside){
-		place="inside";
+		// place="inside";
 
 		room.setAttribute('class',"unclickable");
 		isOutside = false;
@@ -123,7 +123,7 @@ portal.addEventListener('click', function()
 		// "to": "0 -74.5 0"
 		// });
 		mysky.setAttribute("animation", "property: position; dur:5000; delay: 200; to: 0 -74.5 0; ");
-		mysky.addEventListener("animationcomplete", moveHiddenPortal);
+		// mysky.addEventListener("animationcomplete", moveHiddenPortal);
 		moveHiddenPortal();
 
 		//animation to fade in the outside world panorama
