@@ -16,7 +16,7 @@ AFRAME.registerComponent('cursor-listener', {
 		});
 		this.el.addEventListener('fusing', function (evt) {
 			cursor.setAttribute('material', 'opacity', 0.2);
-			cursor.setAttribute('animation', 'property:geometry.thetaLength; dur: 10000; easing: easeInOutSine; from: 0; to: 360');
+			cursor.setAttribute('animation', 'property:geometry.thetaLength; dur: 1000; easing: easeInOutSine; from: 0; to: 360');
 		});
 		this.el.addEventListener('mouseleave', function (evt) {
 			cursor.setAttribute('material', 'opacity', 0.8);
