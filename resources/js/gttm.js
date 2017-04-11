@@ -71,7 +71,7 @@ var myQuad = document.getElementById("quad");
 var myOuter = document.getElementById("outerRing");
 var myMiddle = document.getElementById("middleRing");
 var myInner = document.getElementById("innerRing");
-var portal = document.getElementById("portal");
+var portal = document.getElementById("portal-plane");
 var seedPod = document.getElementById("seedPod");
 
 var isOutside = true;
