@@ -20,26 +20,14 @@
 
 <body>
 	<script>
-		AFRAME.registerComponent('blurb-view-opener', {
-
-			schema: {
-				id_TitleCSS: {type: 'string'},
-				id_BlurbCSS: {type: 'string'},
-				positionString: {type: 'string'}
-			},
-
-			init: function (id_TitleCSS, id_BlurbCSS, positionString) {
+		AFRAME.registerComponent('blurb-view-opener-seed', {
+			init: function () {
 				this.el.addEventListener('mouseenter', function (evt) {
-					this.setAttribute('position', this.data.positionString);
-					var titleCSS = document.getElementById(this.data.id_TitleCSS);
+					document.getElementById('seedPod').setAttribute('position', '5 0 -15');
+					var titleCSS = document.getElementById('seedTitleCSS');
 					titleCSS.setAttribute('visible', false);
-					var blurbCSS = document.getElementById(this.data.id_BlurbCSS);
+					var blurbCSS = document.getElementById('seeedBlurbCSS');
 					blurbCSS.setAttribute('visible', true);
-					// this.setAttribute('position', '0 0 0');
-					// var titleCSS = document.getElementById('seedTitleCSS');
-					// titleCSS.setAttribute('visible', false);
-					// var blurbCSS = document.getElementById('seeedBlurbCSS');
-					// blurbCSS.setAttribute('visible', true);
 				});
 				this.el.addEventListener('mouseleave', function (evt) {
 					this.setAttribute('material', 'opacity', 1.0);
@@ -159,15 +147,15 @@
 					
 					<!-- Seed Artifact -->
 					<a-entity position="4 -1 -15">
-<!-- 						<a-sphere position="0 0 0" radius=".03" color="#ffff00"></a-sphere>
+<!-- 					<a-sphere position="0 0 0" radius=".03" color="#ffff00"></a-sphere>
 						<a-sphere position="5 0 0" radius=".03" color="#ff0000"></a-sphere>
 						<a-sphere position="0 5 0" radius=".03" color="#00ff00"></a-sphere>
 						<a-sphere position="0 0 5" radius=".03" color="#0000ff"></a-sphere> -->
 						<a-entity id="seedTitleCSS" css-object="div: #seedTitle" scale="0.1 0.1 0.1" rotation="0 0 0" position="0 0 0"></a-entity>  
 						<a-entity id="seedBlurbCSS" css-object="div: #seedBlurb" scale=".1 .1 .1" rotation="0 0 0" position="0 0 0" visible='false'></a-entity>
-						<a-box opacity="1" id="seedMouseBox" curseor-listener blurb-view-close="id_Artifact: seedPod, id_titleCSS: seedTitleCSS, id_BlurbCSS: seedBlurbCSS" color='#BB00FF' position="0 0 0" height="20" width="40" depth="0" rotation="0 0 0" position="0 0 0"></a-box>
-						<!-- <a-obj-model id="seedPod" cursor-listener blurb-view-opener="id_titleCSS: seedTitleCSS; id_blurbCSS: seedBlurbCSS; position: 3 -1 -10; " src="#SeedPod-obj" mtl="#SeedPod-mtl" opacity="0"></a-obj-model> -->
-						<a-sphere id="seedPod" cursor-listener blurb-view-opener="id_titleCSS: seedTitleCSS; id_blurbCSS: seedBlurbCSS; position: 3 -1 -10" position="0 0 0" radius="2" color="#FFFAFA"></a-sphere>
+						<a-box opacity="1" id="seedMouseBox" curseor-listener blurb-view-close="id_Artifact: seedPod, id_titleCSS: seedTitleCSS, id_BlurbCSS: seedBlurbCSS" color='#BB00FF' position="0 0 0" height="5" width="10" depth="0" rotation="0 0 0" position="0 0 0"></a-box>
+						<a-obj-model id="seedPod" cursor-listener blurb-view-opener="id_titleCSS: seedTitleCSS; id_blurbCSS: seedBlurbCSS; position: 3 -1 -10; " src="#SeedPod-obj" mtl="#SeedPod-mtl" opacity="0"></a-obj-model>
+						<a-sphere opacity="0" cursor-listener blurb-view-opener-seed position="0 0 0" radius="2" color="#FFFAFA"></a-sphere>
 					</a-entity>
 
 				</a-sphere>
