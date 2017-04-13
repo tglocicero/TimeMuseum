@@ -18,33 +18,51 @@
 	<title>GA Tech Time Museum</title>
 </head>
 
-<script>
-AFRAME.registerComponent('blurb-view-opener', {
-
-	schema: {
-    	id_TitleCSS: {type: 'string'},
-    	id_BlurbCSS: {type: 'string'},
-    	positionString: {type: 'string'}
-  	},
-
-	init: function (id_TitleCSS, id_BlurbCSS, positionString) {
-		this.el.addEventListener('mouseenter', function (evt) {
-			this.setAttribute('position', this.data.positionString);
-			var titleCSS = document.getElementById(this.data.id_TitleCSS);
-			titleCSS.setAttribute('visible', false);
-			var blurbCSS = document.getElementById(this.data.id_BlurbCSS);
-			blurbCSS.setAttribute('visible', true);
-		});
-		this.el.addEventListener('mouseleave', function (evt) {
-			this.setAttribute('material', 'opacity', 1.0);
-		});
-	}
-});
-</script>
-
 <body>
+	<script>
+		AFRAME.registerComponent('blurb-view-opener', {
+
+			schema: {
+				id_TitleCSS: {type: 'string'},
+				id_BlurbCSS: {type: 'string'},
+				positionString: {type: 'string'}
+			},
+
+			init: function (id_TitleCSS, id_BlurbCSS, positionString) {
+				this.el.addEventListener('mouseenter', function (evt) {
+					this.setAttribute('position', this.data.positionString);
+					var titleCSS = document.getElementById(this.data.id_TitleCSS);
+					titleCSS.setAttribute('visible', false);
+					var blurbCSS = document.getElementById(this.data.id_BlurbCSS);
+					blurbCSS.setAttribute('visible', true);
+				});
+				this.el.addEventListener('mouseleave', function (evt) {
+					this.setAttribute('material', 'opacity', 1.0);
+				});
+			}
+		});
+
+		AFRAME.registerComponent('blurb-view-close', {
+			schema: {
+				id_Artifact: {type: 'string'},
+				id_TitleCSS: {type: 'string'},
+				id_BlurbCSS: {type: 'string'}
+			},
+			init: function () {
+				this.el.addEventListener('mouseleave', function (evt) {
+					var seed = document.getElementById(this.data.id_Artifact);
+					seedPod.setAttribute('position', this.data.positionString);
+					var titleCSS = document.getElementById(this.data.id_titleCSS);
+					titleCSS.setAttribute('visible', true);
+					var blurbCSS = document.getElementById(this.data.id_BlurbCSS);
+					blurbCSS.setAttribute('visible', false);
+				});
+			}
+		});
+	</script>
+
 	<!-- Seed Card -->
-	<div id="seedTitle" class="textbox">Check out this seed!<br><br><br><br><br><br><br><br><br></div>
+	<div id="seedTitle" class="textbox">Check out this seed!<br><br><br><br><br><br></div>
 	<div id="seedBlurb" class="textbox">
 		filler text filler text<br>
 		filler text filler text<br>
@@ -141,8 +159,8 @@ AFRAME.registerComponent('blurb-view-opener', {
 						<a-sphere position="0 5 0" radius=".03" color="#00ff00"></a-sphere>
 						<a-sphere position="0 0 5" radius=".03" color="#0000ff"></a-sphere> -->
 						<a-entity id="seedTitleCSS" css-object="div: #seedTitle" scale="0.1 0.1 0.1" rotation="0 0 0" position="0 0 0"></a-entity>  
-      					<a-entity id="seedBlurbCSS" css-object="div: #seedBlurb" scale=".1 .1 .1" rotation="0 0 0" position="0 0 0" visible='false'></a-entity>
-						
+						<a-entity id="seedBlurbCSS" css-object="div: #seedBlurb" scale=".1 .1 .1" rotation="0 0 0" position="0 0 0" visible='false'></a-entity>
+						<a-box opacity="1" id="seedMouseBox" curseor-listener blurb-view-close="id_Artifact: seedPod, id_titleCSS: seedTitleCSS, id_BlurbCSS: seedBlurbCSS" color='#BB00FF' position="0 0 0" height="20" width="40" depth="0" rotation="0 0 0" position="0 0 0"></a-box>
 						<a-obj-model id="seedPod" cursor-listener blurb-view-opener="id_titleCSS: seedTitleCSS; id_blurbCSS: seedBlurbCSS; position: 3 -1 -10; " src="#SeedPod-obj" mtl="#SeedPod-mtl" opacity="0"></a-obj-model>
 					</a-entity>
 
