@@ -27,7 +27,7 @@ AFRAME.registerComponent('blurb-view-opener', {
     	positionString: {type: 'string'}
   	},
 
-	init: function () {
+	init: function (id_TitleCSS, id_BlurbCSS, positionString) {
 		this.el.addEventListener('mouseenter', function (evt) {
 			this.setAttribute('position', this.data.positionString);
 			var titleCSS = document.getElementById(this.data.id_TitleCSS);
@@ -44,7 +44,7 @@ AFRAME.registerComponent('blurb-view-opener', {
 
 <body>
 	<!-- Seed Card -->
-	<div id="seedTitle" class="textbox">Check out this seed!<br><br><br></div>
+	<div id="seedTitle" class="textbox">Check out this seed!<br><br><br><br><br><br><br><br><br></div>
 	<div id="seedBlurb" class="textbox">
 		filler text filler text<br>
 		filler text filler text<br>
