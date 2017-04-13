@@ -23,7 +23,7 @@
 		AFRAME.registerComponent('blurb-view-opener-seed', {
 			init: function () {
 				this.el.addEventListener('mouseenter', function (evt) {
-					document.getElementById('seedPod').setAttribute('position', '4 -1 15');
+					document.getElementById('seedPod').setAttribute('position', '0 1 0');
 					var titleCSS = document.getElementById('seedTitleCSS');
 					titleCSS.setAttribute('visible', false);
 					var blurbCSS = document.getElementById('seeedBlurbCSS');
@@ -36,7 +36,7 @@
 			init: function () {
 				this.el.addEventListener('mouseleave', function (evt) {
 					var seed = document.getElementById('seedPod');
-					seedPod.setAttribute('position', '3 -1 10');
+					seedPod.setAttribute('position', '0 0 0');
 					var titleCSS = document.getElementById(this.data.id_titleCSS);
 					titleCSS.setAttribute('visible', true);
 					var blurbCSS = document.getElementById(this.data.id_BlurbCSS);
