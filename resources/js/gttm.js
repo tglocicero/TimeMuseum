@@ -91,7 +91,7 @@ var moveHiddenPortal = function(){
 			"height":"100"
 		});
 	}
-	console.log(room.getAttribute("position"))
+	console.log(room.getAttribute("position"));
 	console.log(portal.getAttribute("position"));
 	console.log("Yeah");
 }
