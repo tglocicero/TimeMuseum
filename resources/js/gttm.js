@@ -12,16 +12,16 @@ AFRAME.registerComponent('cursor-listener', {
 		this.el.addEventListener('click', function (evt) {
 			cursor.setAttribute('material', 'opacity', 0.8);
 			cursor.setAttribute('geometry', 'primitive:ring; radiusInner: 0.0025; radiusOuter: 0.00375; thetaStart: 0; thetaLength: 360;');
-			cursor.setAttribute('animation', '');
+			cursor.removeAttribute('animation');
 		});
 		this.el.addEventListener('mouseenter', function (evt) {
-			cursor.setAttribute('material', 'opacity', 0.2);
-			cursor.setAttribute('animation', 'property:geometry.thetaLength; dur: 1000; easing: easeInOutSine; from: 0; to: 360');
+			cursor.setAttribute('material', 'opacity', 1);
+			cursor.setAttribute('animation', 'property:geometry.thetaLength; dur: 2000; easing: easeInOutSine; from: 0; to: 360');
 		});
 		this.el.addEventListener('mouseleave', function (evt) {
 			cursor.setAttribute('material', 'opacity', 0.8);
 			cursor.setAttribute('geometry', 'primitive:ring; radiusInner: 0.0025; radiusOuter: 0.00375; thetaStart: 0; thetaLength: 360;');
-			// cursor.setAttribute('animation', '');
+			cursor.removeAttribute('animation');
 		});
 	}
 });
@@ -83,17 +83,13 @@ function setAttributes(el, attrs) {
 
 var moveHiddenPortal = function(){
 	if(isOutside){
-
+		portal.setAttribute("animation", "property: position; to: 0 -36 0");
 	}
 	else{
-		setAttributes(portal, {
-			"position":"0 25 0",
-			"height":"100"
-		});
+		portal.setAttribute("animation", "property: position; to: 0 -3 0");
+		portal.setAttribute("width", "8");
+		portal.setAttribute("depth", "8");
 	}
-	// console.log(room.getAttribute("position"));
-	console.log(portal.getAttribute("position"));
-	console.log("Yeah");
 }
 
 portal.addEventListener('click', function()
