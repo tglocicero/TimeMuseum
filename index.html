@@ -139,13 +139,15 @@
 			<a-sphere position="5 0 0" radius=".03" color="#ff0000"></a-sphere>
 			<a-sphere position="0 5 0" radius=".03" color="#00ff00"></a-sphere>
 			<a-sphere position="0 0 5" radius=".03" color="#0000ff"></a-sphere>
-			<a-entity position="10 0 0" rotation="0 -90 0">
-				<a-entity id="seedTitleCSS" css-object="div: #seedTitle" scale="0.1 0.1 0.1" position="0 0 0"></a-entity>  
-				<a-entity id="seedBlurbCSS" css-object="div: #seedBlurb" scale=".1 .1 .1" position="0 0 0" visible='false'></a-entity>
-				<a-box opacity="0" id="seedMouseBox" curseor-listener blurb-view-close-seed
-						color='#BB00FF' position="0 0 0" height="5" width="10" depth="0" " position="0 0 0"></a-box>
-				<a-obj-model id="seedPod" src="#SeedPod-obj" mtl="#SeedPod-mtl" opacity="0"></a-obj-model>
-				<a-sphere opacity="0" cursor-listener blurb-view-opener-seed position="0 0 0" radius="2" color="#FFFAFA"></a-sphere>
+			<a-entity position="15 0 0" rotation="0 -90 0">
+				<a-entity rotation="0 72 0">
+					<a-entity id="seedTitleCSS" css-object="div: #seedTitle" scale="0.1 0.1 0.1" position="0 0 0"></a-entity>  
+					<a-entity id="seedBlurbCSS" css-object="div: #seedBlurb" scale=".01 .01 .01" position="0 0 -5" visible='false'></a-entity>
+					<a-box opacity="0" id="seedMouseBox" curseor-listener blurb-view-close-seed
+					color='#BB00FF' position="0 0 0" height="5" width="10" depth="0" " position="0 0 0"></a-box>
+					<a-obj-model id="seedPod" src="#SeedPod-obj" mtl="#SeedPod-mtl" opacity="0"></a-obj-model>
+					<a-sphere opacity="0" cursor-listener blurb-view-opener-seed position="0 0 0" radius="2" color="#FFFAFA"></a-sphere>
+				</a-entity>
 			</a-entity>
 
 		</a-sphere>

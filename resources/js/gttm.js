@@ -52,7 +52,7 @@ AFRAME.registerComponent('cursor-listener', {
 AFRAME.registerComponent('blurb-view-opener-seed', {
 	init: function () {
 		this.el.addEventListener('mouseenter', function (evt) {
-			document.getElementById('seedPod').setAttribute('position', '2 2 2');
+			document.getElementById('seedPod').setAttribute('position', '0 0 5');
 			var titleCSS = document.getElementById('seedTitleCSS');
 			titleCSS.setAttribute('visible', false);
 			var blurbCSS = document.getElementById('seedBlurbCSS');
