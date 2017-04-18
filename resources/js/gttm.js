@@ -55,7 +55,7 @@ AFRAME.registerComponent('blurb-view-opener-seed', {
 			document.getElementById('seedPod').setAttribute('position', '2 2 2');
 			var titleCSS = document.getElementById('seedTitleCSS');
 			titleCSS.setAttribute('visible', false);
-			var blurbCSS = document.getElementById('seeedBlurbCSS');
+			var blurbCSS = document.getElementById('seedBlurbCSS');
 			blurbCSS.setAttribute('visible', true);
 		});
 	}
@@ -66,9 +66,9 @@ AFRAME.registerComponent('blurb-view-close-seed', {
 		this.el.addEventListener('mouseleave', function (evt) {
 			var seed = document.getElementById('seedPod');
 			seedPod.setAttribute('position', '0 0 0');
-			var titleCSS = document.getElementById(this.data.id_titleCSS);
+			var titleCSS = document.getElementById('seedTitleCSS');
 			titleCSS.setAttribute('visible', true);
-			var blurbCSS = document.getElementById(this.data.id_BlurbCSS);
+			var blurbCSS = document.getElementById('seedBlurbCSS');
 			blurbCSS.setAttribute('visible', false);
 		});
 	}
