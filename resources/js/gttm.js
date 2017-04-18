@@ -29,21 +29,46 @@ AFRAME.registerComponent('cursor-listener', {
 // BEGIN BLURB VIEWING DELICIOUSNESS
 
 
-AFRAME.registerComponent('blurb-view-closer', {
+// AFRAME.registerComponent('blurb-view-closer', {
 
-	schema: {
-		id_Artifact: {type: 'string'},
-		id_TitleCSS: {type: 'string'},
-		positionString: {type: 'string'}
-	},
+// 	schema: {
+// 		id_Artifact: {type: 'string'},
+// 		id_TitleCSS: {type: 'string'},
+// 		positionString: {type: 'string'}
+// 	},
 
+// 	init: function () {
+// 		this.el.addEventListener('mouseleave', function (evt) {
+// 			var seed = document.getElementById('seedPod');
+// 			seedPod.setAttribute('position', this.data.positionString);
+// 			var titleCSS = document.getElementById('seedTitleCSS');
+// 			titleCSS.setAttribute('visible', true);
+// 			var blurbCSS = document.getElementById('seedBlurbCSS');
+// 			blurbCSS.setAttribute('visible', false);
+// 		});
+// 	}
+// });
+
+AFRAME.registerComponent('blurb-view-opener-seed', {
+	init: function () {
+		this.el.addEventListener('mouseenter', function (evt) {
+			document.getElementById('seedPod').setAttribute('position', '2 2 2');
+			var titleCSS = document.getElementById('seedTitleCSS');
+			titleCSS.setAttribute('visible', false);
+			var blurbCSS = document.getElementById('seeedBlurbCSS');
+			blurbCSS.setAttribute('visible', true);
+		});
+	}
+});
+
+AFRAME.registerComponent('blurb-view-close-seed', {
 	init: function () {
 		this.el.addEventListener('mouseleave', function (evt) {
 			var seed = document.getElementById('seedPod');
-			seedPod.setAttribute('position', this.data.positionString);
-			var titleCSS = document.getElementById('seedTitleCSS');
+			seedPod.setAttribute('position', '0 0 0');
+			var titleCSS = document.getElementById(this.data.id_titleCSS);
 			titleCSS.setAttribute('visible', true);
-			var blurbCSS = document.getElementById('seedBlurbCSS');
+			var blurbCSS = document.getElementById(this.data.id_BlurbCSS);
 			blurbCSS.setAttribute('visible', false);
 		});
 	}
@@ -76,9 +101,9 @@ var seedPod = document.getElementById("seedPod");
 var isOutside = true;
 
 function setAttributes(el, attrs) {
-  for(var key in attrs) {
-    el.setAttribute(key, attrs[key]);
-  }
+	for(var key in attrs) {
+		el.setAttribute(key, attrs[key]);
+	}
 }
 
 var moveHiddenPortal = function(){
@@ -128,10 +153,10 @@ portal.addEventListener('click', function()
 
 		var fadeUp = document.createElement("a-animation");
 		setAttributes(fadeUp, {
-		"id": "zoomUp",
-		"attribute": "opacity",
-		"dur": "200",
-		"to": "100"
+			"id": "zoomUp",
+			"attribute": "opacity",
+			"dur": "200",
+			"to": "100"
 		});
 
 		//animatioin to fade in the room panorama
@@ -139,10 +164,10 @@ portal.addEventListener('click', function()
 
 		var roomFadeUp = document.createElement("a-animation");
 		setAttributes(roomFadeUp, {
-		"attribute": "opacity",
-		"dur": "200",
-		"delay": "3300",
-		"to": "1"
+			"attribute": "opacity",
+			"dur": "200",
+			"delay": "3300",
+			"to": "1"
 		});
 
 		//fades seed up when entering room
@@ -151,10 +176,10 @@ portal.addEventListener('click', function()
 
 		var fadeSeedUp = document.createElement("a-animation");
 		setAttributes(fadeSeedUp, {
-		"attribute": "opacity",
-		"dur": "200",
-		"delay": "3300",
-		"to": "1"
+			"attribute": "opacity",
+			"dur": "200",
+			"delay": "3300",
+			"to": "1"
 		});
 
 
@@ -162,84 +187,84 @@ portal.addEventListener('click', function()
 
 		var fadeOuterPortalOutUp = document.createElement("a-animation");
 		setAttributes(fadeOuterPortalOutUp, {
-		"attribute": "opacity",
-		"dur": "200",
-		"delay": "3300",
-		"to": "0"
+			"attribute": "opacity",
+			"dur": "200",
+			"delay": "3300",
+			"to": "0"
 		});
 
 
 		var fadeMiddlePortalOut = document.createElement("a-animation");
 		setAttributes(fadeMiddlePortalOut, {
-		"attribute": "opacity",
-		"dur": "200",
-		"delay": "3300",
-		"to": "0"
+			"attribute": "opacity",
+			"dur": "200",
+			"delay": "3300",
+			"to": "0"
 		});
 
 
 		var fadeInnerPortalOut = document.createElement("a-animation");
 		setAttributes(fadeInnerPortalOut, {
-		"attribute": "opacity",
-		"dur": "200",
-		"delay": "3300",
-		"to": "0"
+			"attribute": "opacity",
+			"dur": "200",
+			"delay": "3300",
+			"to": "0"
 		});
 
 		var fadeOuterPortalUp = document.createElement("a-animation");
 		setAttributes(fadeOuterPortalUp, {
-		"attribute": "opacity",
-		"dur": "200",
-		"delay": "5000",
-		"to": "1"
+			"attribute": "opacity",
+			"dur": "200",
+			"delay": "5000",
+			"to": "1"
 		});
 
 
 
 		var fadeMiddlePortalUp = document.createElement("a-animation");
 		setAttributes(fadeMiddlePortalUp, {
-		"attribute": "opacity",
-		"dur": "200",
-		"delay": "5000",
-		"to": "1"
+			"attribute": "opacity",
+			"dur": "200",
+			"delay": "5000",
+			"to": "1"
 		});
 
 
 		var fadeInnerPortalUp = document.createElement("a-animation");
 		setAttributes(fadeInnerPortalUp, {
-		"attribute": "opacity",
-		"dur": "200",
-		"delay": "5000",
-		"to": "1"
+			"attribute": "opacity",
+			"dur": "200",
+			"delay": "5000",
+			"to": "1"
 		});
 
 
 
 		var scaleOuterPortalDown = document.createElement("a-animation");
 		setAttributes(scaleOuterPortalDown, {
-		"attribute": "scale",
-		"dur": "200",
-		"delay": "3300",
-		"to": "0.5 0.5 0.5"
+			"attribute": "scale",
+			"dur": "200",
+			"delay": "3300",
+			"to": "0.5 0.5 0.5"
 		});
 
 
 		var scaleMiddlePortalDown = document.createElement("a-animation");
 		setAttributes(scaleMiddlePortalDown, {
-		"attribute": "scale",
-		"dur": "200",
-		"delay": "3300",
-		"to": "0.5 0.5 0.5"
+			"attribute": "scale",
+			"dur": "200",
+			"delay": "3300",
+			"to": "0.5 0.5 0.5"
 		});
 
 
 
 		var scaleInnerPortalDown = document.createElement("a-animation");
 		setAttributes(scaleInnerPortalDown, {
-		"attribute": "scale",
-		"dur": "200",
-		"delay": "3300",
-		"to": "0.5 0.5 0.5"
+			"attribute": "scale",
+			"dur": "200",
+			"delay": "3300",
+			"to": "0.5 0.5 0.5"
 		});
 
 
@@ -249,55 +274,55 @@ portal.addEventListener('click', function()
 
 		var moveOuterPortalDown = document.createElement("a-animation");
 		setAttributes(moveOuterPortalDown, {
-		"attribute": "position",
-		"dur": "200",
-		"delay": "3300",
-		"to": "0 -3 0"
+			"attribute": "position",
+			"dur": "200",
+			"delay": "3300",
+			"to": "0 -3 0"
 		});
 
 
 
 		var moveMiddlePortalDown = document.createElement("a-animation");
 		setAttributes(moveMiddlePortalDown, {
-		"attribute": "position",
-		"dur": "200",
-		"delay": "3300",
-		"to": "0 -3 0"
+			"attribute": "position",
+			"dur": "200",
+			"delay": "3300",
+			"to": "0 -3 0"
 		});
 
 		var moveInnerPortalDown = document.createElement("a-animation");
 		setAttributes(moveInnerPortalDown, {
-		"attribute": "position",
-		"dur": "200",
-		"delay": "3300",
-		"to": "0 -3 0"
+			"attribute": "position",
+			"dur": "200",
+			"delay": "3300",
+			"to": "0 -3 0"
 		});
 
 
 
 		var changeOuterMaterial = document.createElement("a-animation");
 		setAttributes(changeOuterMaterial, {
-		"attribute": "mtl",
-		"dur": "200",
-		"delay": "3800",
-		"to": "white"
+			"attribute": "mtl",
+			"dur": "200",
+			"delay": "3800",
+			"to": "white"
 		});
 
 		var changeMiddleMaterial = document.createElement("a-animation");
 		setAttributes(changeMiddleMaterial, {
-		"attribute": "mtl",
-		"dur": "200",
-		"delay": "3800",
-		"to": "white"
+			"attribute": "mtl",
+			"dur": "200",
+			"delay": "3800",
+			"to": "white"
 		});
 
 
 		var changeInnerMaterial = document.createElement("a-animation");
 		setAttributes(changeInnerMaterial, {
-		"attribute": "mtl",
-		"dur": "200",
-		"delay": "3800",
-		"to": "white"
+			"attribute": "mtl",
+			"dur": "200",
+			"delay": "3800",
+			"to": "white"
 		});
 
 
@@ -331,18 +356,18 @@ portal.addEventListener('click', function()
 
 // 	"use strict";
 
-	else{
+else{
 	//animation to pull user into room location
-		isOutside = true;
+	isOutside = true;
 
-		var zoomdown = document.createElement("a-animation");
-		setAttributes(zoomdown, {
+	var zoomdown = document.createElement("a-animation");
+	setAttributes(zoomdown, {
 		"id": "zoomUp",
 		"attribute": "position",
 		"dur": "5000",
 		"delay": "200",
 		"to": "0 0 0"
-		});
+	});
 
 		//animation to fade out the outside world panorama once you land back on earth
 
@@ -350,11 +375,11 @@ portal.addEventListener('click', function()
 
 		var fadeUp = document.createElement("a-animation");
 		setAttributes(fadeUp, {
-		"id": "zoomUp",
-		"attribute": "opacity",
-		"dur": "4000",
-		"delay": "200",
-		"to": "0"
+			"id": "zoomUp",
+			"attribute": "opacity",
+			"dur": "4000",
+			"delay": "200",
+			"to": "0"
 		});
 
 		//animatioin to fade out the room panorama
@@ -362,101 +387,101 @@ portal.addEventListener('click', function()
 
 		var roomFadeOut = document.createElement("a-animation");
 		setAttributes(roomFadeOut, {
-		"attribute": "opacity",
-		"dur": "200",
-		"delay": "3300",
-		"to": "0"
+			"attribute": "opacity",
+			"dur": "200",
+			"delay": "3300",
+			"to": "0"
 		});
 
 
 		var fadeSeedDown = document.createElement("a-animation");
 		setAttributes(fadeSeedDown, {
-		"attribute": "opacity",
-		"dur": "200",
-		"delay": "1000",
-		"to": "0"
+			"attribute": "opacity",
+			"dur": "200",
+			"delay": "1000",
+			"to": "0"
 		});
 
 
 		// animation to move portal down when entering room
 		var fadeOuterPortalOut = document.createElement("a-animation");
 		setAttributes(fadeOuterPortalOut, {
-		"attribute": "opacity",
-		"dur": "200",
-		"delay": "3300",
-		"to": "1"
+			"attribute": "opacity",
+			"dur": "200",
+			"delay": "3300",
+			"to": "1"
 		});
 
 
 		var fadeMiddlePortalOut = document.createElement("a-animation");
 		setAttributes(fadeMiddlePortalOut, {
-		"attribute": "opacity",
-		"dur": "200",
-		"delay": "3300",
-		"to": "1"
+			"attribute": "opacity",
+			"dur": "200",
+			"delay": "3300",
+			"to": "1"
 		});
 
 
 		var fadeInnerPortalOut = document.createElement("a-animation");
 		setAttributes(fadeInnerPortalOut, {
-		"attribute": "opacity",
-		"dur": "200",
-		"delay": "3300",
-		"to": "1"
+			"attribute": "opacity",
+			"dur": "200",
+			"delay": "3300",
+			"to": "1"
 		});
 
 
 		var fadeOuterPortalUp = document.createElement("a-animation");
 		setAttributes(fadeOuterPortalUp, {
-		"attribute": "opacity",
-		"dur": "200",
-		"delay": "5000",
-		"to": "1"
+			"attribute": "opacity",
+			"dur": "200",
+			"delay": "5000",
+			"to": "1"
 		});
 
 
 		var fadeMiddlePortalUp = document.createElement("a-animation");
 		setAttributes(fadeMiddlePortalUp, {
-		"attribute": "opacity",
-		"dur": "200",
-		"delay": "5000",
-		"to": "1"
+			"attribute": "opacity",
+			"dur": "200",
+			"delay": "5000",
+			"to": "1"
 		});
 
 		var fadeInnerPortalUp = document.createElement("a-animation");
 		setAttributes(fadeInnerPortalUp, {
-		"attribute": "opacity",
-		"dur": "200",
-		"delay": "5000",
-		"to": "1"
+			"attribute": "opacity",
+			"dur": "200",
+			"delay": "5000",
+			"to": "1"
 		});
 
 
 		var scaleOuterPortalUp = document.createElement("a-animation");
 		setAttributes(scaleOuterPortalUp, {
-		"attribute": "scale",
-		"dur": "200",
-		"delay": "3300",
-		"to": "10 10 10"
+			"attribute": "scale",
+			"dur": "200",
+			"delay": "3300",
+			"to": "10 10 10"
 		});
 
 
 		var scaleMiddlePortalUp = document.createElement("a-animation");
 		setAttributes(scaleMiddlePortalUp, {
-		"attribute": "scale",
-		"dur": "200",
-		"delay": "3300",
-		"to": "10 10 10"
+			"attribute": "scale",
+			"dur": "200",
+			"delay": "3300",
+			"to": "10 10 10"
 		});
 
 
 
 		var scaleInnerPortalUp = document.createElement("a-animation");
 		setAttributes(scaleInnerPortalUp, {
-		"attribute": "scale",
-		"dur": "200",
-		"delay": "3300",
-		"to": "10 10 10"
+			"attribute": "scale",
+			"dur": "200",
+			"delay": "3300",
+			"to": "10 10 10"
 		});
 
 
@@ -465,55 +490,55 @@ portal.addEventListener('click', function()
 
 		var moveOuterPortalUp = document.createElement("a-animation");
 		setAttributes(moveOuterPortalUp, {
-		"attribute": "position",
-		"dur": "200",
-		"delay": "3300",
-		"to": "0 0 0"
+			"attribute": "position",
+			"dur": "200",
+			"delay": "3300",
+			"to": "0 0 0"
 		});
 
 
 		var moveMiddlePortalUp = document.createElement("a-animation");
 		setAttributes(moveMiddlePortalUp, {
-		"attribute": "position",
-		"dur": "200",
-		"delay": "3300",
-		"to": "0 0 0"
+			"attribute": "position",
+			"dur": "200",
+			"delay": "3300",
+			"to": "0 0 0"
 		});
 
 
 		var moveInnerPortalUp = document.createElement("a-animation");
 		setAttributes(moveInnerPortalUp, {
-		"attribute": "position",
-		"dur": "200",
-		"delay": "3300",
-		"to": "0 0 0"
+			"attribute": "position",
+			"dur": "200",
+			"delay": "3300",
+			"to": "0 0 0"
 		});
 
 
 		var changeOuterMaterial = document.createElement("a-animation");
 		setAttributes(changeOuterMaterial, {
-		"attribute": "mtl",
-		"dur": "200",
-		"delay": "3800",
-		"to": "#74FF31"
+			"attribute": "mtl",
+			"dur": "200",
+			"delay": "3800",
+			"to": "#74FF31"
 		});
 
 
 		var changeMiddleMaterial = document.createElement("a-animation");
 		setAttributes(changeMiddleMaterial, {
-		"attribute": "mtl",
-		"dur": "200",
-		"delay": "3800",
-		"to": "#74FF31"
+			"attribute": "mtl",
+			"dur": "200",
+			"delay": "3800",
+			"to": "#74FF31"
 		});
 
 
 		var changeInnerMaterial = document.createElement("a-animation");
 		setAttributes(changeInnerMaterial, {
-		"attribute": "mtl",
-		"dur": "200",
-		"delay": "3800",
-		"to": "#74FF31"
+			"attribute": "mtl",
+			"dur": "200",
+			"delay": "3800",
+			"to": "#74FF31"
 		});
 
 
