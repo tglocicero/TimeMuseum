@@ -49,6 +49,7 @@ AFRAME.registerComponent('cursor-listener', {
 // 	}
 // });
 
+// seed pod
 AFRAME.registerComponent('blurb-view-opener-seed', {
 	init: function () {
 		this.el.addEventListener('mouseenter', function (evt) {
@@ -64,11 +65,60 @@ AFRAME.registerComponent('blurb-view-opener-seed', {
 AFRAME.registerComponent('blurb-view-close-seed', {
 	init: function () {
 		this.el.addEventListener('mouseleave', function (evt) {
-			var seed = document.getElementById('seedPod');
 			seedPod.setAttribute('position', '0 0 0');
 			var titleCSS = document.getElementById('seedTitleCSS');
 			titleCSS.setAttribute('visible', true);
 			var blurbCSS = document.getElementById('seedBlurbCSS');
+			blurbCSS.setAttribute('visible', false);
+		});
+	}
+});
+
+// tree
+AFRAME.registerComponent('blurb-view-opener-tree', {
+	init: function () {
+		this.el.addEventListener('mouseenter', function (evt) {
+			document.getElementById('tree').setAttribute('position', '-2 0 5');
+			var titleCSS = document.getElementById('treeTitleCSS');
+			titleCSS.setAttribute('visible', false);
+			var blurbCSS = document.getElementById('treeBlurbCSS');
+			blurbCSS.setAttribute('visible', true);
+		});
+	}
+});
+
+AFRAME.registerComponent('blurb-view-close-tree', {
+	init: function () {
+		this.el.addEventListener('mouseleave', function (evt) {
+			tree.setAttribute('position', '0 0 0');
+			var titleCSS = document.getElementById('treeTitleCSS');
+			titleCSS.setAttribute('visible', true);
+			var blurbCSS = document.getElementById('treeBlurbCSS');
+			blurbCSS.setAttribute('visible', false);
+		});
+	}
+});
+
+// nose computer
+AFRAME.registerComponent('blurb-view-opener-nasal', {
+	init: function () {
+		this.el.addEventListener('mouseenter', function (evt) {
+			document.getElementById('nasal').setAttribute('position', '-2 0 5');
+			var titleCSS = document.getElementById('nasalnanobotsTitleCSS');
+			titleCSS.setAttribute('visible', false);
+			var blurbCSS = document.getElementById('nasalnanobotsBlurbCSS');
+			blurbCSS.setAttribute('visible', true);
+		});
+	}
+});
+
+AFRAME.registerComponent('blurb-view-close-nasal', {
+	init: function () {
+		this.el.addEventListener('mouseleave', function (evt) {
+			nasal.setAttribute('position', '0 0 0');
+			var titleCSS = document.getElementById('nasalnanobotsTitleCSS');
+			titleCSS.setAttribute('visible', true);
+			var blurbCSS = document.getElementById('nasalnanobotsBlurbCSS');
 			blurbCSS.setAttribute('visible', false);
 		});
 	}

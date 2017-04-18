@@ -53,6 +53,18 @@
 		<img src="resources/images/SeedPod.jpg" id="seedBlurb" visible="false" style="width:100px;height:100px;"></img>
 	</div>
 
+	<!-- Carbon Tree Card -->
+	<div hidden>
+		<div id="treeTitle" visible="true" class="textbox">Carbon Tree<br><br><br><br></div>
+		<img src="resources/images/CarbonTree.jpg" id="treeBlurb" visible="false" style="width:100px;height:100px;"></img>
+	</div>
+
+	<!-- Nasal Nanobot Card -->
+	<div hidden>
+		<div id="nasalnanobotsTitle" visible="true" class="textbox">Nasal Nanobots<br><br><br><br></div>
+		<img src="resources/images/NasalNanobots.jpg" id="nasalnanobotsBlurb" visible="false" style="width:100px;height:100px;"></img>
+	</div>
+
 	<ar-scene vr-mode-ui>
 		<a-assets>
 			<a-asset-item src="resources/images/QuadPanorama.jpg" id="quadPano"></a-asset-item>
@@ -61,6 +73,12 @@
 			<a-asset-item src="resources/models/portalRing.mtl" id="portalRing-mtl" ></a-asset-item>
 			<a-asset-item src="resources/models/SeedPod.obj" id="SeedPod-obj" ></a-asset-item>
 			<a-asset-item src="resources/models/SeedPod.mtl" id="SeedPod-mtl" ></a-asset-item>
+			<a-asset-item src="resources/models/CarbonTree.obj" id="tree-obj" ></a-asset-item>
+			<a-asset-item src="resources/models/CarbonTree.mtl" id="tree-mtl" ></a-asset-item>
+			<a-asset-item src="resources/models/Inhalable.obj" id="nasalnanobots-obj" ></a-asset-item>
+			<a-asset-item src="resources/models/Inhalable.mtl" id="nasalnanobots-mtl" ></a-asset-item>
+			<a-asset-item src="resources/models/DisplayPaint.obj" id="spray-obj" ></a-asset-item>
+			<a-asset-item src="resources/models/DisplayPaint.mtl" id="spray-mtl" ></a-asset-item>
 		</a-assets>
 
 		<a-entity light="type: ambient; color: #CCC" intensity="3"></a-entity>
@@ -134,19 +152,45 @@
 
 		<a-sphere id="room" src ="#roomPano" radius="25" opacity="0" side="double">
 
+		<!-- axis orientation spheres -->
+		<a-sphere position="0 0 0" radius=".03" color="#ffff00"></a-sphere>
+		<a-sphere position="5 0 0" radius=".03" color="#ff0000"></a-sphere>
+		<a-sphere position="0 5 0" radius=".03" color="#00ff00"></a-sphere>
+		<a-sphere position="0 0 5" radius=".03" color="#0000ff"></a-sphere>
+
 			<!-- Seed Artifact -->
-			<a-sphere position="0 0 0" radius=".03" color="#ffff00"></a-sphere>
-			<a-sphere position="5 0 0" radius=".03" color="#ff0000"></a-sphere>
-			<a-sphere position="0 5 0" radius=".03" color="#00ff00"></a-sphere>
-			<a-sphere position="0 0 5" radius=".03" color="#0000ff"></a-sphere>
 			<a-entity position="4.64 0 -14.3" rotation="0 -90 0">
 				<a-entity rotation="0 72 0">
-					<a-entity id="seedTitleCSS" css-object="div: #seedTitle" scale="0.15 0.15 0.15" position="0 0 0"></a-entity>  
+					<a-entity id="seedTitleCSS" css-object="div: #seedTitle" scale="0.1 0.1 0.1" position="0 0 0"></a-entity>  
 					<a-entity id="seedBlurbCSS" css-object="div: #seedBlurb" scale=".035 .035 .035" position="2 0 5" visible='false'></a-entity>
 					<a-box opacity=".2" id="seedMouseBox" curseor-listener blurb-view-close-seed
 					color='#BB00FF' position="0 0 0" height="7.5" width="15" depth="0" " position="0 0 0"></a-box>
 					<a-obj-model id="seedPod" src="#SeedPod-obj" mtl="#SeedPod-mtl" opacity="0"></a-obj-model>
 					<a-sphere opacity="0" cursor-listener blurb-view-opener-seed position="0 0 0" radius="2" color="#FFFAFA"></a-sphere>
+				</a-entity>
+			</a-entity>
+
+			<!-- tree artifact -->
+			<a-entity position="-12.1663 0 -8.83185" rotation="0 -90 0">
+				<a-entity rotation="0 144 0">
+					<a-entity id="treeTitleCSS" css-object="div: #treeTitle" scale="0.1 0.1 0.1" position="0 0 0"></a-entity>  
+					<a-entity id="treeBlurbCSS" css-object="div: #treeBlurb" scale=".035 .035 .035" position="2 0 5" visible='false'></a-entity>
+					<a-box opacity=".2" id="treeMouseBox" curseor-listener blurb-view-close-tree
+					color='#BB00FF' position="0 0 0" height="7.5" width="15" depth="0" " position="0 0 0"></a-box>
+					<a-obj-model id="tree" src="#tree-obj" mtl="#tree-mtl" opacity="0"></a-obj-model>
+					<a-sphere opacity="0" cursor-listener blurb-view-opener-tree position="0 0 0" radius="2" color="#FFFAFA"></a-sphere>
+				</a-entity>
+			</a-entity>
+
+			<!-- inhalable computer artifact -->
+			<a-entity position="-12.1592 0 -8.84165" rotation="0 -90 0">
+				<a-entity rotation="0 216 0">
+					<a-entity id="nasalnanobotsTitleCSS" css-object="div: #nasalnanobotsTitle" scale="0.1 0.1 0.1" position="0 0 0"></a-entity>  
+					<a-entity id="nasalnanobotsBlurbCSS" css-object="div: #nasalnanobotsBlurb" scale=".035 .035 .035" position="2 0 5" visible='false'></a-entity>
+					<a-box opacity=".2" id="nasalMouseBox" curseor-listener blurb-view-close-nasal
+					color='#BB00FF' position="0 0 0" height="7.5" width="15" depth="0" " position="0 0 0"></a-box>
+					<a-obj-model id="nasal" src="#nasalnanobots-obj" mtl="#nasalnanobots-mtl" opacity="0"></a-obj-model>
+					<a-sphere opacity="0" cursor-listener blurb-view-opener-nasal position="0 0 0" radius="2" color="#FFFAFA"></a-sphere>
 				</a-entity>
 			</a-entity>
 
