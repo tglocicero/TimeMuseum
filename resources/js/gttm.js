@@ -123,6 +123,31 @@ AFRAME.registerComponent('blurb-view-close-nasal', {
 		});
 	}
 });
+
+// spray computer
+AFRAME.registerComponent('blurb-view-opener-spray', {
+	init: function () {
+		this.el.addEventListener('mouseenter', function (evt) {
+			document.getElementById('spray').setAttribute('position', '-2 0 5');
+			var titleCSS = document.getElementById('sprayTitleCSS');
+			titleCSS.setAttribute('visible', false);
+			var blurbCSS = document.getElementById('sprayBlurbCSS');
+			blurbCSS.setAttribute('visible', true);
+		});
+	}
+});
+
+AFRAME.registerComponent('blurb-view-close-spray', {
+	init: function () {
+		this.el.addEventListener('mouseleave', function (evt) {
+			spray.setAttribute('position', '0 0 0');
+			var titleCSS = document.getElementById('sprayTitleCSS');
+			titleCSS.setAttribute('visible', true);
+			var blurbCSS = document.getElementById('sprayBlurbCSS');
+			blurbCSS.setAttribute('visible', false);
+		});
+	}
+});
 // END BLURB VIEWING DELICIOUSNESS
 
 // document.getElementById("myCursor").setAttribute('animation', 'property:geometry.thetaLength; dur: 1000; easing: easeInOutSine; from: 0; to: 360');

@@ -194,6 +194,18 @@
 				</a-entity>
 			</a-entity>
 
+			<!-- spray artifact -->
+			<a-entity position="-12.1663 0 -8.83188" rotation="0 -90 0">
+				<a-entity rotation="0 288 0">
+					<a-entity id="sprayTitleCSS" css-object="div: #sprayTitle" scale="0.1 0.1 0.1" position="0 0 0"></a-entity>  
+					<a-entity id="sprayBlurbCSS" css-object="div: #sprayBlurb" scale=".035 .035 .035" position="2 0 5" visible='false'></a-entity>
+					<a-box opacity=".2" id="sprayMouseBox" curseor-listener blurb-view-close-spray
+					color='#BB00FF' position="0 0 0" height="7.5" width="15" depth="0" " position="0 0 0"></a-box>
+					<a-obj-model id="nasal" src="#spray-obj" mtl="#spray-mtl" opacity="0"></a-obj-model>
+					<a-sphere opacity="0" cursor-listener blurb-view-opener-spray position="0 0 0" radius="2" color="#FFFAFA"></a-sphere>
+				</a-entity>
+			</a-entity>
+
 		</a-sphere>
 
 	</a-entity>
