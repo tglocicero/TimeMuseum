@@ -13,15 +13,32 @@ AFRAME.registerComponent('cursor-listener', {
 			cursor.setAttribute('material', 'opacity', 0.8);
 			cursor.setAttribute('geometry', 'primitive:ring; radiusInner: 0.0025; radiusOuter: 0.00375; thetaStart: 0; thetaLength: 360;');
 			cursor.removeAttribute('animation');
+			console.log(this.components);
+			if(this.className == "blurb-view-opener"){
+				console.log("TRRRRRRUE");
+				this.setAttribute('visible', 'false'); //sphere
+				var artifact = this.parentNode.childNodes[7]; //object
+				artifact.setAttribute('position', '-2 0 5');
+				this.parentNode.childNodes[1].setAttribute('visible', false); //title
+				this.parentNode.childNodes[3].setAttribute('visible', true); //blurb
+			}
 		});
 		this.el.addEventListener('mouseenter', function (evt) {
 			cursor.setAttribute('material', 'opacity', 1);
-			cursor.setAttribute('animation', 'property:geometry.thetaLength; dur: 2000; easing: easeInOutSine; from: 0; to: 360');
+			if(this.className != "blurb-view-closer")
+				cursor.setAttribute('animation', 'property:geometry.thetaLength; dur: 2000; easing: easeInOutSine; from: 0; to: 360');
 		});
 		this.el.addEventListener('mouseleave', function (evt) {
 			cursor.setAttribute('material', 'opacity', 0.8);
 			cursor.setAttribute('geometry', 'primitive:ring; radiusInner: 0.0025; radiusOuter: 0.00375; thetaStart: 0; thetaLength: 360;');
 			cursor.removeAttribute('animation');
+			if(this.className == "blurb-view-closer"){
+				this.parentNode.childNodes[9].setAttribute('visible', 'true'); //sphere
+				var artifact = this.parentNode.childNodes[7]; //object
+				artifact.setAttribute('position', '0 0 0');
+				this.parentNode.childNodes[1].setAttribute('visible', true); //title
+				this.parentNode.childNodes[3].setAttribute('visible', false); //blurb
+			}
 		});
 	}
 });
@@ -90,6 +107,7 @@ AFRAME.registerComponent('blurb-view-opener-tree', {
 AFRAME.registerComponent('blurb-view-close-tree', {
 	init: function () {
 		this.el.addEventListener('mouseleave', function (evt) {
+			// console.log(this);
 			tree.setAttribute('position', '0 0 0');
 			var titleCSS = document.getElementById('treeTitleCSS');
 			titleCSS.setAttribute('visible', true);
