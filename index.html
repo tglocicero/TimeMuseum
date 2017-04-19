@@ -65,7 +65,7 @@
 		<img src="resources/images/NasalNanobots.jpg" id="nasalnanobotsBlurb" visible="false" style="width:100px;height:100px;"></img>
 	</div>
 
-	<ar-scene vr-mode-ui>
+	<a-scene vr-mode-ui>
 		<a-assets>
 			<a-asset-item src="resources/images/QuadPanorama.jpg" id="quadPano"></a-asset-item>
 			<a-asset-item src="resources/images/roomPanorama.jpg" id="roomPano"></a-asset-item>
@@ -83,9 +83,9 @@
 
 		<a-entity light="type: ambient; color: #CCC" intensity="3"></a-entity>
 		<!-- <a-entity id="camera"> -->
-<!-- 		<a-entity camera look-controls wasd-controls >
--->		
-<ar-camera>
+ 		<a-entity camera look-controls wasd-controls >
+		
+<!-- <ar-camera> -->
 	<a-entity id="myCursor" cursor="fuse:true; fuse-timeout: 2000"
 	position="0 0 -0.1"
 	geometry="primitive:ring; radiusInner: 0.0025; radiusOuter: 0.00375; thetaStart: 0; thetaLength: 360;"
@@ -108,9 +108,9 @@
 				to="1 1 1"
 				dur="200"></a-animation>	-->  		   
 			</a-entity> 
-		</ar-camera>
-<!-- 		</a-entity>
--->
+		<!-- </ar-camera> -->
+ 		</a-entity>
+
 <a-entity id="sky">
 
 	<a-sphere id="quad" src ="#quadPano" radius="100" opacity="0" side="double" selectable="false"></a-sphere>
@@ -201,7 +201,7 @@
 					<a-entity id="sprayBlurbCSS" css-object="div: #sprayBlurb" scale=".035 .035 .035" position="2 0 5" visible='false'></a-entity>
 					<a-box opacity=".2" id="sprayMouseBox" curseor-listener blurb-view-close-spray
 					color='#BB00FF' position="0 0 0" height="7.5" width="15" depth="0" position="0 0 0"></a-box>
-					<a-obj-model id="nasal" src="#spray-obj" mtl="#spray-mtl" opacity="0"></a-obj-model>
+					<a-obj-model id="spray" src="#spray-obj" mtl="#spray-mtl" opacity="0"></a-obj-model>
 					<a-sphere opacity="0" cursor-listener blurb-view-opener-spray position="0 0 0" radius="2" color="#FFFAFA"></a-sphere>
 				</a-entity>
 			</a-entity>
@@ -210,7 +210,7 @@
 
 	</a-entity>
 </a-entity>
-</ar-scene>
+</a-scene>
 
 <script src="resources/js/gttm.js"></script>
 </body>
