@@ -118,7 +118,7 @@ portal.addEventListener('click', function()
 				for(var i = 0; i < set.length; i++){
 					set[i].setAttribute("cursor-listener", null);
 				}
-			}, 3000);
+			}, 50);
 			sp.components.sound.playSound();
 			// sp.components.sound.stopSound();
 
