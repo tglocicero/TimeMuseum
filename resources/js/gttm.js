@@ -16,7 +16,7 @@ AFRAME.registerComponent('cursor-listener', {
 			if(this.className == "blurb-view-opener"){
 				this.setAttribute('visible', 'false'); //sphere
 				var artifact = this.parentNode.childNodes[7]; //object
-				artifact.setAttribute('position', '-2 0 5');
+				artifact.setAttribute('position', '-2 0 0');
 				this.parentNode.childNodes[1].setAttribute('visible', false); //title
 				this.parentNode.childNodes[3].setAttribute('visible', true); //blurb
 			}
