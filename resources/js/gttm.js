@@ -13,9 +13,7 @@ AFRAME.registerComponent('cursor-listener', {
 			cursor.setAttribute('material', 'opacity', 0.8);
 			cursor.setAttribute('geometry', 'primitive:ring; radiusInner: 0.0025; radiusOuter: 0.00375; thetaStart: 0; thetaLength: 360;');
 			cursor.removeAttribute('animation');
-			console.log(this.components);
 			if(this.className == "blurb-view-opener"){
-				console.log("TRRRRRRUE");
 				this.setAttribute('visible', 'false'); //sphere
 				var artifact = this.parentNode.childNodes[7]; //object
 				artifact.setAttribute('position', '-2 0 5');
@@ -238,7 +236,20 @@ portal.addEventListener('click', function()
 		// "to": "0 -74.5 0"
 		// });
 		mysky.setAttribute("animation", "property: position; dur:5000; delay: 200; to: 0 -74.5 0; ");
-		mysky.addEventListener("animationcomplete", moveHiddenPortal);
+		mysky.addEventListener("animationcomplete", function(){
+			moveHiddenPortal();
+			var sp = document.querySelector("#intro-sound-player");
+			sp.addEventListener("sound-ended", function(){
+				//enable cursor on blurb views after the intro sound
+				var set = document.querySelectorAll(".blurb-view-opener");
+				for(var i = 0; i < set.length; i++){
+					set[i].setAttribute("cursor-listener", null);
+				}
+			});
+			sp.components.sound.playSound();
+			// sp.components.sound.stopSound();
+
+		});
 		// moveHiddenPortal();
 
 		//animation to fade in the outside world panorama
@@ -278,8 +289,8 @@ portal.addEventListener('click', function()
 
 		// animation to move portal down when entering room
 
-		var fadeOuterPortalOutUp = document.createElement("a-animation");
-		setAttributes(fadeOuterPortalOutUp, {
+		var fadeOuterPortalOut = document.createElement("a-animation");
+		setAttributes(fadeOuterPortalOut, {
 			"attribute": "opacity",
 			"dur": "200",
 			"delay": "3300",
