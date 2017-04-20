@@ -5,7 +5,7 @@
 //     return template.content.firstChild;
 // }
 
-// // setup cursor
+// setup cursor
 AFRAME.registerComponent('cursor-listener', {
 	init: function () {
 		var cursor = document.getElementById("myCursor");
@@ -42,133 +42,6 @@ AFRAME.registerComponent('cursor-listener', {
 });
 
 // BEGIN BLURB VIEWING DELICIOUSNESS
-
-
-// AFRAME.registerComponent('blurb-view-closer', {
-
-// 	schema: {
-// 		id_Artifact: {type: 'string'},
-// 		id_TitleCSS: {type: 'string'},
-// 		positionString: {type: 'string'}
-// 	},
-
-// 	init: function () {
-// 		this.el.addEventListener('mouseleave', function (evt) {
-// 			var seed = document.getElementById('seedPod');
-// 			seedPod.setAttribute('position', this.data.positionString);
-// 			var titleCSS = document.getElementById('seedTitleCSS');
-// 			titleCSS.setAttribute('visible', true);
-// 			var blurbCSS = document.getElementById('seedBlurbCSS');
-// 			blurbCSS.setAttribute('visible', false);
-// 		});
-// 	}
-// });
-
-// seed pod
-// AFRAME.registerComponent('blurb-view-opener-seed', {
-// 	init: function () {
-// 		this.el.addEventListener('mouseenter', function (evt) {
-// 			document.getElementById('seedPod').setAttribute('position', '-2 0 5');
-// 			var titleCSS = document.getElementById('seedTitleCSS');
-// 			titleCSS.setAttribute('visible', false);
-// 			var blurbCSS = document.getElementById('seedBlurbCSS');
-// 			blurbCSS.setAttribute('visible', true);
-// 		});
-// 	}
-// });
-
-// AFRAME.registerComponent('blurb-view-close-seed', {
-// 	init: function () {
-// 		this.el.addEventListener('mouseleave', function (evt) {
-// 			seedPod.setAttribute('position', '0 0 0');
-// 			var titleCSS = document.getElementById('seedTitleCSS');
-// 			titleCSS.setAttribute('visible', true);
-// 			var blurbCSS = document.getElementById('seedBlurbCSS');
-// 			blurbCSS.setAttribute('visible', false);
-// 		});
-// 	}
-// });
-
-// // tree
-// AFRAME.registerComponent('blurb-view-opener-tree', {
-// 	init: function () {
-// 		this.el.addEventListener('mouseenter', function (evt) {
-// 			document.getElementById('tree').setAttribute('position', '-2 0 5');
-// 			var titleCSS = document.getElementById('treeTitleCSS');
-// 			titleCSS.setAttribute('visible', false);
-// 			var blurbCSS = document.getElementById('treeBlurbCSS');
-// 			blurbCSS.setAttribute('visible', true);
-// 		});
-// 	}
-// });
-
-// AFRAME.registerComponent('blurb-view-close-tree', {
-// 	init: function () {
-// 		this.el.addEventListener('mouseleave', function (evt) {
-// 			// console.log(this);
-// 			tree.setAttribute('position', '0 0 0');
-// 			var titleCSS = document.getElementById('treeTitleCSS');
-// 			titleCSS.setAttribute('visible', true);
-// 			var blurbCSS = document.getElementById('treeBlurbCSS');
-// 			blurbCSS.setAttribute('visible', false);
-// 		});
-// 	}
-// });
-
-// // nose computer
-// AFRAME.registerComponent('blurb-view-opener-nasal', {
-// 	init: function () {
-// 		this.el.addEventListener('mouseenter', function (evt) {
-// 			document.getElementById('nasal').setAttribute('position', '-2 0 5');
-// 			var titleCSS = document.getElementById('nasalnanobotsTitleCSS');
-// 			titleCSS.setAttribute('visible', false);
-// 			var blurbCSS = document.getElementById('nasalnanobotsBlurbCSS');
-// 			blurbCSS.setAttribute('visible', true);
-// 		});
-// 	}
-// });
-
-// AFRAME.registerComponent('blurb-view-close-nasal', {
-// 	init: function () {
-// 		this.el.addEventListener('mouseleave', function (evt) {
-// 			nasal.setAttribute('position', '0 0 0');
-// 			var titleCSS = document.getElementById('nasalnanobotsTitleCSS');
-// 			titleCSS.setAttribute('visible', true);
-// 			var blurbCSS = document.getElementById('nasalnanobotsBlurbCSS');
-// 			blurbCSS.setAttribute('visible', false);
-// 		});
-// 	}
-// });
-
-// // spray computer
-// AFRAME.registerComponent('blurb-view-opener-spray', {
-// 	init: function () {
-// 		this.el.addEventListener('mouseenter', function (evt) {
-// 			document.getElementById('spray').setAttribute('position', '-2 0 5');
-// 			var titleCSS = document.getElementById('sprayTitleCSS');
-// 			titleCSS.setAttribute('visible', false);
-// 			var blurbCSS = document.getElementById('sprayBlurbCSS');
-// 			blurbCSS.setAttribute('visible', true);
-// 		});
-// 	}
-// });
-
-// AFRAME.registerComponent('blurb-view-close-spray', {
-// 	init: function () {
-// 		this.el.addEventListener('mouseleave', function (evt) {
-// 			spray.setAttribute('position', '0 0 0');
-// 			var titleCSS = document.getElementById('sprayTitleCSS');
-// 			titleCSS.setAttribute('visible', true);
-// 			var blurbCSS = document.getElementById('sprayBlurbCSS');
-// 			blurbCSS.setAttribute('visible', false);
-// 		});
-// 	}
-// });
-// END BLURB VIEWING DELICIOUSNESS
-
-// document.getElementById("myCursor").setAttribute('animation', 'property:geometry.thetaLength; dur: 1000; easing: easeInOutSine; from: 0; to: 360');
-
-
 
 // This creates an event listener for box with ID "0" that causes the sky transparency to fade up to 100% over five seconds.
 
@@ -239,13 +112,13 @@ portal.addEventListener('click', function()
 		mysky.addEventListener("animationcomplete", function(){
 			moveHiddenPortal();
 			var sp = document.querySelector("#intro-sound-player");
-			sp.addEventListener("sound-ended", function(){
+			setTimeout(function(){
 				//enable cursor on blurb views after the intro sound
 				var set = document.querySelectorAll(".blurb-view-opener");
 				for(var i = 0; i < set.length; i++){
 					set[i].setAttribute("cursor-listener", null);
 				}
-			});
+			}, 3000);
 			sp.components.sound.playSound();
 			// sp.components.sound.stopSound();
 

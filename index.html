@@ -65,7 +65,7 @@
 		<img src="resources/images/NasalNanobots.jpg" id="nasalnanobotsBlurb" visible="false" style="width:100px;height:100px;"></img>
 	</div>
 
-	<a-scene vr-mode-ui>
+	<ar-scene vr-mode-ui>
 		<a-assets>
 			<a-asset-item src="resources/images/QuadPanorama.jpg" id="quadPano"></a-asset-item>
 			<a-asset-item src="resources/images/roomPanorama.jpg" id="roomPano"></a-asset-item>
@@ -85,33 +85,19 @@
 
 		<a-entity light="type: ambient; color: #CCC" intensity="3"></a-entity>
 		<!-- <a-entity id="camera"> -->
- 		<a-entity camera look-controls wasd-controls >
+ 		<!-- <a-entity camera look-controls wasd-controls > -->
 		
-<!-- <ar-camera> -->
+<ar-camera>
 	<a-entity id="myCursor" cursor="fuse:true; fuse-timeout: 2000"
 	position="0 0 -0.1"
 	geometry="primitive:ring; radiusInner: 0.0025; radiusOuter: 0.00375; thetaStart: 0; thetaLength: 360;"
 	scale="1 1 1"
 	rotation="0 0 90"
 	material="color: #6666FF; shader:flat;opacity:0.8;">
-				<!-- <a-animation begin="cursor-fusing"
-				attribute="geometry.thetaLength"
-				easing="ease-in-out-cubic"
-				fill="forwards"
-				from= "360"
-				to="0"
-				dur="1000"></a-animation> -->
-
-				<!-- <a-animation begin="click"
-				attribute="scale"
-				easing="ease-in"
-				fill="forwards"
-				from= "0.1 0.1 0.1"
-				to="1 1 1"
-				dur="200"></a-animation>	-->  		   
+		   
 			</a-entity> 
-		<!-- </ar-camera> -->
- 		</a-entity>
+		</ar-camera>
+ 		<!-- </a-entity> -->
 
 <a-entity id="sky">
 
@@ -213,7 +199,7 @@
 
 	</a-entity>
 </a-entity>
-</a-scene>
+</ar-scene>
 
 <script src="resources/js/gttm.js"></script>
 </body>
