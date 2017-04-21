@@ -65,7 +65,7 @@
 		<img src="resources/images/NasalNanobots.jpg" id="nasalnanobotsBlurb" visible="false" style="width:100px;height:100px;"></img>
 	</div>
 
-	<ar-scene vr-mode-ui>
+	<a-scene vr-mode-ui>
 		<a-assets>
 			<a-asset-item src="resources/images/QuadPanorama.jpg" id="quadPano"></a-asset-item>
 			<a-asset-item src="resources/images/roomPanorama.jpg" id="roomPano"></a-asset-item>
@@ -85,9 +85,9 @@
 
 		<a-entity light="type: ambient; color: #CCC" intensity="3"></a-entity>
 		<!-- <a-entity id="camera"> -->
- 		<!-- <a-entity camera look-controls wasd-controls > -->
+ 		<a-entity camera look-controls wasd-controls >
 		
-<ar-camera>
+<!-- <ar-camera> -->
 	<a-entity id="myCursor" cursor="fuse:true; fuse-timeout: 2000"
 	position="0 0 -0.1"
 	geometry="primitive:ring; radiusInner: 0.0025; radiusOuter: 0.00375; thetaStart: 0; thetaLength: 360;"
@@ -96,8 +96,8 @@
 	material="color: #6666FF; shader:flat;opacity:0.8;">
 		   
 			</a-entity> 
-		</ar-camera>
- 		<!-- </a-entity> -->
+		<!-- </ar-camera> -->
+ 		</a-entity>
 
 <a-entity id="sky">
 
@@ -138,7 +138,7 @@
 		</a-entity>
 
 		<a-entity id='ambience-sound-player' sound='src: #ambience-sound'></a-entity>
-		<a-entity id='intro-sound-player' sound='src: #intro-sound'></a-entity>
+		<a-entity id='intro-sound-player' sound='src: #intro-sound; autoplay: true; volume: 1'></a-entity>
 		<a-sphere id="room" src ="#roomPano" radius="25" opacity="0" side="double">
 
 		<!-- axis orientation spheres -->
@@ -199,7 +199,7 @@
 
 	</a-entity>
 </a-entity>
-</ar-scene>
+</a-scene>
 
 <script src="resources/js/gttm.js"></script>
 </body>

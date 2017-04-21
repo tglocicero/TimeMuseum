@@ -4,6 +4,7 @@
 //     template.innerHTML = html;
 //     return template.content.firstChild;
 // }
+// document.querySelector("#intro-sound-player").components.sound.playSound();
 
 // setup cursor
 AFRAME.registerComponent('cursor-listener', {
