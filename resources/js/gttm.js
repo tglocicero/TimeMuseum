@@ -6,15 +6,27 @@
 // }
 // document.querySelector("#intro-sound-player").components.sound.playSound();
 
+// function fadeOutAnimStop(){
+// 	this.components.sound.stopSound();
+// 	this.removeAttribute('animation');
+// 	this.removeEventListener("animationcomplete", fadeOutAnimStop);
+// }
+var i, t;
+
 function soundFadeOut(elem){
-	// var i = setInterval(function(){
-	// 	elem.components.sound.volume -= 1.66;
-	// }, 1000);
-	setTimeout(function(){
-		// clearInterval(i);
+	console.log(elem);
+	i = setInterval(function(){
+		var tmp = Number(elem.components.sound.attrValue.volume)-0.83;
+		elem.components.sound.attrValue.volume = ""+tmp;
+		console.log(elem.components.sound.attrValue.volume);
+	}, 500);
+	t = setTimeout(function(){
 		elem.components.sound.stopSound();
-		elem.components.sound.volume = 5;
+		clearInterval(i);
+		clearTimeout(t);
 	}, 3000);
+	// elem.setAttribute('animation', 'property:position; from: 0 0 0; to: 0 0 -5; easing: linear; dur: 3000');
+	// elem.addEventListener('animationcomplete', fadeOutAnimStop);
 }
 
 var activeSP = null;
@@ -37,8 +49,13 @@ AFRAME.registerComponent('cursor-listener', {
 				if(activeSP){
 					activeSP.components.sound.stopSound();
 				}
-				this.parentNode.childNodes[11].components.sound.playSound();
+				clearInterval(i);
+				clearTimeout(t);
 				activeSP = this.parentNode.childNodes[11];
+				activeSP.components.sound.attrValue.volume = "5";
+				activeSP.components.sound.playSound();
+				// this.parentNode.childNodes[11].setAttribute('position', '0 0 0');
+				
 			}
 		});
 		this.el.addEventListener('mouseenter', function (evt) {
@@ -92,6 +109,26 @@ function setAttributes(el, attrs) {
 	}
 }
 
+function initRoom(){
+	moveHiddenPortal();
+	document.querySelector("#ambience-sound-player").components.sound.playSound();
+	var sp = document.querySelector("#intro-sound-player");
+	activeSP = sp;
+	setTimeout(function(){
+		//enable cursor on blurb views after the intro sound
+		var set = document.querySelectorAll(".blurb-view-opener");
+		for(var i = 0; i < set.length; i++){
+			set[i].setAttribute("cursor-listener", null);
+			set[i].parentNode.childNodes[7].setAttribute('animation', 'property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 5000; easing: linear');
+		}
+	}, 50);
+	sp.components.sound.playSound();
+	mysky.removeEventListener("animationcomplete", initRoom);
+
+	// sp.components.sound.stopSound();
+
+}
+
 var moveHiddenPortal = function(){
 	if(isOutside){
 		portal.setAttribute("animation", "property: position; to: 0 -36 0");
@@ -132,24 +169,7 @@ portal.addEventListener('click', function()
 		// });
 		mysky.setAttribute("animation", "property: position; dur:5000; delay: 200; to: 0 -74.5 0; ");
 
-		mysky.addEventListener("animationcomplete", function(){
-			moveHiddenPortal();
-			// document.querySelector("#ambience-sound-player").components.sound.playSound();
-			var sp = document.querySelector("#intro-sound-player");
-			activeSP = sp;
-			setTimeout(function(){
-				//enable cursor on blurb views after the intro sound
-				var set = document.querySelectorAll(".blurb-view-opener");
-				for(var i = 0; i < set.length; i++){
-					set[i].setAttribute("cursor-listener", null);
-					set[i].parentNode.childNodes[7].setAttribute('animation', 'property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 5000; easing: linear');
-				}
-			}, 50);
-			sp.components.sound.playSound();
-
-			// sp.components.sound.stopSound();
-
-		});
+		mysky.addEventListener("animationcomplete", initRoom);
 		// moveHiddenPortal();
 
 		//animation to fade in the outside world panorama
