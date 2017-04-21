@@ -112,6 +112,7 @@ portal.addEventListener('click', function()
 		mysky.setAttribute("animation", "property: position; dur:5000; delay: 200; to: 0 -74.5 0; ");
 		mysky.addEventListener("animationcomplete", function(){
 			moveHiddenPortal();
+			document.querySelector("#ambience-sound-player").components.playSound();
 			var sp = document.querySelector("#intro-sound-player");
 			setTimeout(function(){
 				//enable cursor on blurb views after the intro sound
@@ -121,6 +122,7 @@ portal.addEventListener('click', function()
 				}
 			}, 50);
 			sp.components.sound.playSound();
+
 			// sp.components.sound.stopSound();
 
 		});
