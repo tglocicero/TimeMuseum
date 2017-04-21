@@ -110,16 +110,17 @@ portal.addEventListener('click', function()
 		// "to": "0 -74.5 0"
 		// });
 		mysky.setAttribute("animation", "property: position; dur:5000; delay: 200; to: 0 -74.5 0; ");
-		document.querySelector("#ambience-sound-player").components.sound.playSound();
+
 		mysky.addEventListener("animationcomplete", function(){
 			moveHiddenPortal();
-
+			document.querySelector("#ambience-sound-player").components.sound.playSound();
 			var sp = document.querySelector("#intro-sound-player");
 			setTimeout(function(){
 				//enable cursor on blurb views after the intro sound
 				var set = document.querySelectorAll(".blurb-view-opener");
 				for(var i = 0; i < set.length; i++){
 					set[i].setAttribute("cursor-listener", null);
+					set[i].setAttribute("animation", "property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 5000; ")
 				}
 			}, 50);
 			sp.components.sound.playSound();
