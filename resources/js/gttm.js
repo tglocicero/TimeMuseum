@@ -6,6 +6,19 @@
 // }
 // document.querySelector("#intro-sound-player").components.sound.playSound();
 
+function soundFadeOut(elem){
+	// var i = setInterval(function(){
+	// 	elem.components.sound.volume -= 1.66;
+	// }, 1000);
+	setTimeout(function(){
+		// clearInterval(i);
+		elem.components.sound.stopSound();
+		elem.components.sound.volume = 5;
+	}, 3000);
+}
+
+var activeSP = null;
+
 // setup cursor
 AFRAME.registerComponent('cursor-listener', {
 	init: function () {
@@ -20,6 +33,12 @@ AFRAME.registerComponent('cursor-listener', {
 				artifact.setAttribute('position', '-2 0 0');
 				this.parentNode.childNodes[1].setAttribute('visible', false); //title
 				this.parentNode.childNodes[3].setAttribute('visible', true); //blurb
+				this.parentNode.childNodes[5].setAttribute('position', '0 0 5'); //pink thing
+				if(activeSP){
+					activeSP.components.sound.stopSound();
+				}
+				this.parentNode.childNodes[11].components.sound.playSound();
+				activeSP = this.parentNode.childNodes[11];
 			}
 		});
 		this.el.addEventListener('mouseenter', function (evt) {
@@ -37,6 +56,8 @@ AFRAME.registerComponent('cursor-listener', {
 				artifact.setAttribute('position', '0 0 0');
 				this.parentNode.childNodes[1].setAttribute('visible', true); //title
 				this.parentNode.childNodes[3].setAttribute('visible', false); //blurb
+				this.parentNode.childNodes[5].setAttribute('position', '0 0 0'); //pink thing
+				soundFadeOut(this.parentNode.childNodes[11]);
 			}
 		});
 	}
@@ -113,14 +134,15 @@ portal.addEventListener('click', function()
 
 		mysky.addEventListener("animationcomplete", function(){
 			moveHiddenPortal();
-			document.querySelector("#ambience-sound-player").components.sound.playSound();
+			// document.querySelector("#ambience-sound-player").components.sound.playSound();
 			var sp = document.querySelector("#intro-sound-player");
+			activeSP = sp;
 			setTimeout(function(){
 				//enable cursor on blurb views after the intro sound
 				var set = document.querySelectorAll(".blurb-view-opener");
 				for(var i = 0; i < set.length; i++){
 					set[i].setAttribute("cursor-listener", null);
-					set[i].setAttribute("animation", "property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 5000; ")
+					set[i].parentNode.childNodes[7].setAttribute('animation', 'property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 5000; easing: linear');
 				}
 			}, 50);
 			sp.components.sound.playSound();

@@ -65,10 +65,10 @@
 		<img src="resources/images/NasalNanobots.jpg" id="nasalnanobotsBlurb" visible="false" style="width:100px;height:100px;"></img>
 	</div>
 
-	<ar-scene vr-mode-ui>
+	<a-scene vr-mode-ui>
 		<a-assets>
 			<audio id="ambience-sound" src="resources/audios/PortolAmbience.mp3" preload="auto"></audio>
-			<audio id="intro-sound" src="resources/audios/Intro.mp3" preload="auto"></audio>
+			<audio id="intro-sound" src="resources/audios/Intro.mp3" preload="false"></audio>
 			<audio id="spray-sound" src="resources/audios/DisplayPaint1.mp3" preload="auto"></audio>
 			<audio id="nasal-sound" src="resources/audios/inhalable1.mp3" preload="auto"></audio>
 			<audio id="seed-sound" src="resources/audios/SeedPod1.mp3" preload="auto"></audio>
@@ -89,9 +89,9 @@
 
 		<a-entity light="type: ambient; color: #CCC" intensity="3"></a-entity>
 		<!-- <a-entity id="camera"> -->
- 		<!-- <a-entity camera look-controls wasd-controls > -->
+ 		<a-entity camera look-controls wasd-controls >
 		
-<ar-camera>
+<!-- <ar-camera> -->
 	<a-entity id="myCursor" cursor="fuse:true; fuse-timeout: 2000"
 	position="0 0 -0.1"
 	geometry="primitive:ring; radiusInner: 0.0025; radiusOuter: 0.00375; thetaStart: 0; thetaLength: 360;"
@@ -100,8 +100,8 @@
 	material="color: #6666FF; shader:flat;opacity:0.8;">
 		   
 			</a-entity> 
-		</ar-camera>
- 		<!-- </a-entity> -->
+		<!-- </ar-camera> -->
+ 		</a-entity>
 
 <a-entity id="sky">
 
@@ -141,8 +141,8 @@
 			<!-- <a-entity position="0 -65 0" particle-system="color: #00EF00,#CCCC00; direction:-1;type:2;size:0.5;preset: dust"></a-entity> -->
 		</a-entity>
 
-		<a-entity id='ambience-sound-player' sound='src: #ambience-sound; loop: true' position= "0 0 0"></a-entity>
-		<a-entity id='intro-sound-player' sound='src: #intro-sound; volume: 1; autoplay: true' position="0 0 0"></a-entity>
+		<a-entity id='ambience-sound-player' sound='src: #ambience-sound; loop: true; volume: 0.5' position= "0 0 0"></a-entity>
+		<a-entity id='intro-sound-player' sound='src: #intro-sound; volume: 1;' position="0 0 0"></a-entity>
 		<script>
 		// document.querySelector("#intro-sound-player").components.sound.playSound();
 		// console.log("AAAAA");
@@ -164,7 +164,7 @@
 					color='#BB00FF' position="0 0 0" height="7.5" width="15" depth="0" position="0 0 0"></a-box>
 					<a-obj-model id="seedPod" src="#SeedPod-obj" mtl="#SeedPod-mtl" opacity="0"></a-obj-model>
 					<a-sphere opacity="0" class="blurb-view-opener" position="0 0 0" radius="2" color="#FFFAFA"></a-sphere>
-					<a-entity id='seed-sound-player' sound='src: #seed-sound;' position= "0 0 0"></a-entity>
+					<a-entity id='seed-sound-player' sound='src: #seed-sound; volume: 5' position= "0 0 0"></a-entity>
 				</a-entity>
 			</a-entity>
 
@@ -177,7 +177,7 @@
 					color='#BB00FF' position="0 0 0" height="7.5" width="15" depth="0" position="0 0 0"></a-box>
 					<a-obj-model id="tree" src="#tree-obj" mtl="#tree-mtl" opacity="0"></a-obj-model>
 					<a-sphere opacity="0" class="blurb-view-opener" position="0 0 0" radius="2" color="#FFFAFA"></a-sphere>
-					<a-entity id='tree-sound-player' sound='src: #tree-sound;' position= "0 0 0"></a-entity>
+					<a-entity id='tree-sound-player' sound='src: #tree-sound; volume: 5' position= "0 0 0"></a-entity>
 				</a-entity>
 			</a-entity>
 
@@ -190,7 +190,7 @@
 					color='#BB00FF' position="0 0 0" height="7.5" width="15" depth="0" position="0 0 0"></a-box>
 					<a-obj-model id="nasal" src="#nasalnanobots-obj" mtl="#nasalnanobots-mtl" opacity="0"></a-obj-model>
 					<a-sphere opacity="0" class="blurb-view-opener" position="0 0 0" radius="2" color="#FFFAFA"></a-sphere>
-					<a-entity id='nasal-sound-player' sound='src: #nasal-sound;' position= "0 0 0"></a-entity>
+					<a-entity id='nasal-sound-player' sound='src: #nasal-sound; volume: 5' position= "0 0 0"></a-entity>
 				</a-entity>
 			</a-entity>
 
@@ -203,7 +203,7 @@
 					color='#BB00FF' position="0 0 0" height="7.5" width="15" depth="0" position="0 0 0"></a-box>
 					<a-obj-model id="spray" src="#spray-obj" mtl="#spray-mtl" opacity="0"></a-obj-model>
 					<a-sphere opacity="0" class="blurb-view-opener" position="0 0 0" radius="2" color="#FFFAFA"></a-sphere>
-					<a-entity id='spray-sound-player' sound='src: #spray-sound;' position= "0 0 0"></a-entity>
+					<a-entity id='spray-sound-player' sound='src: #spray-sound; volume: 5' position= "0 0 0"></a-entity>
 				</a-entity>
 			</a-entity>
 
@@ -211,7 +211,7 @@
 
 	</a-entity>
 </a-entity>
-</ar-scene>
+</a-scene>
 
 <script src="resources/js/gttm.js"></script>
 </body>
