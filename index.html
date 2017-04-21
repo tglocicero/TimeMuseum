@@ -138,7 +138,10 @@
 		</a-entity>
 
 		<a-entity id='ambience-sound-player' sound='src: #ambience-sound'></a-entity>
-		<a-entity id='intro-sound-player' sound='src: #intro-sound'></a-entity>
+		<a-entity id='intro-sound-player' sound='src: #intro-sound; autoplay: true; volume: 1' position="0 -74 0"></a-entity>
+		<script>
+		document.querySelector("#intro-sound-player").components.sound.playSound();
+		</script>
 		<a-sphere id="room" src ="#roomPano" radius="25" opacity="0" side="double">
 
 		<!-- axis orientation spheres -->
