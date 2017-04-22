@@ -63,8 +63,8 @@ AFRAME.registerComponent('cursor-listener', {
 				if(activeSP){
 					activeSP.components.sound.stopSound();
 				}
-				clearInterval(i);
-				clearTimeout(t);
+				// clearInterval(i);
+				// clearTimeout(t);
 				activeSP = this.parentNode.childNodes[11];
 				activeSP.components.sound.attrValue.volume = "5";
 				activeSP.components.sound.playSound();
