@@ -21,30 +21,87 @@
 
 <body>
 	<script>
-		// AFRAME.registerComponent('blurb-view-opener-seed', {
-		// 	init: function () {
-		// 		this.el.addEventListener('mouseenter', function (evt) {
-		// 			document.getElementById('seedPod').setAttribute('position', '2 2 2');
-		// 			var titleCSS = document.getElementById('seedTitleCSS');
-		// 			titleCSS.setAttribute('visible', false);
-		// 			var blurbCSS = document.getElementById('seeedBlurbCSS');
-		// 			blurbCSS.setAttribute('visible', true);
-		// 		});
-		// 	}
-		// });
+		var t;
 
-		// AFRAME.registerComponent('blurb-view-close-seed', {
-		// 	init: function () {
-		// 		this.el.addEventListener('mouseleave', function (evt) {
-		// 			var seed = document.getElementById('seedPod');
-		// 			seedPod.setAttribute('position', '0 0 0');
-		// 			var titleCSS = document.getElementById(this.data.id_titleCSS);
-		// 			titleCSS.setAttribute('visible', true);
-		// 			var blurbCSS = document.getElementById(this.data.id_BlurbCSS);
-		// 			blurbCSS.setAttribute('visible', false);
-		// 		});
-		// 	}
-		// });
+		function soundFadeOut(elem){
+			console.log(elem);
+			// i = setInterval(function(){
+			// 	var tmp = Number(elem.components.sound.attrValue.volume)-0.83;
+			// 	elem.components.sound.attrValue.volume = ""+tmp;
+			// 	console.log(elem.components.sound.attrValue.volume);
+			// }, 500);
+			// t = setTimeout(function(){
+			// 	elem.components.sound.stopSound();
+			// 	clearInterval(i);
+			// 	clearTimeout(t);
+			// }, 3000);
+			// elem.setAttribute('animation', 'property:position; from: 0 0 0; to: 0 0 -5; easing: linear; dur: 3000');
+			// elem.addEventListener('animationcomplete', fadeOutAnimStop);
+			elem.components.sound.stopSound();
+		}
+
+		var activeSP = null;
+		var arrID = ["0", "1", "2", "3"];
+		// setup cursor
+		AFRAME.registerComponent('cursor-listener', {
+			init: function () {
+				var cursor = document.getElementById("myCursor");
+		        var identifier = parseInt(this.el.getAttribute("id", 10));
+				this.el.addEventListener('click', function (evt) {
+					cursor.setAttribute('material', 'opacity', 0.8);
+					cursor.setAttribute('geometry', 'primitive:ring; radiusInner: 0.0025; radiusOuter: 0.00375; thetaStart: 0; thetaLength: 360;');
+					cursor.removeAttribute('animation');
+		            if(this.className == "button") {
+		                for(var i=0; i < 4; i++)
+		                    {
+		                        var curBut = document.getElementById(arrID[i]);
+		                        if(i != identifier) {
+		                            curBut.setAttribute("material", "src: #voteClosed");
+		                        } else {
+		                            curBut.setAttribute("material", "src: #voteThanks");
+		                        }
+		                    }
+		            }
+					if(this.className == "blurb-view-opener"){
+						this.setAttribute('visible', 'false'); //sphere
+						var artifact = this.parentNode.childNodes[7]; //object
+						artifact.setAttribute('position', '-2 0 0');
+						this.parentNode.childNodes[1].setAttribute('visible', false); //title
+						this.parentNode.childNodes[3].setAttribute('visible', true); //blurb
+						this.parentNode.childNodes[5].setAttribute('position', '0 0 5'); //pink thing
+						if(activeSP){
+							activeSP.components.sound.stopSound();
+						}
+						// clearInterval(i);
+						// clearTimeout(t);
+						activeSP = this.parentNode.childNodes[11];
+						activeSP.components.sound.attrValue.volume = "5";
+						activeSP.components.sound.playSound();
+						// this.parentNode.childNodes[11].setAttribute('position', '0 0 0');
+						
+					}
+				});
+				this.el.addEventListener('mouseenter', function (evt) {
+					cursor.setAttribute('material', 'opacity', 1);
+					if(this.className != "blurb-view-closer")
+						cursor.setAttribute('animation', 'property:geometry.thetaLength; dur: 2000; easing: easeInOutSine; from: 0; to: 360');
+				});
+				this.el.addEventListener('mouseleave', function (evt) {
+					cursor.setAttribute('material', 'opacity', 0.8);
+					cursor.setAttribute('geometry', 'primitive:ring; radiusInner: 0.0025; radiusOuter: 0.00375; thetaStart: 0; thetaLength: 360;');
+					cursor.removeAttribute('animation');
+					if(this.className == "blurb-view-closer"){
+						this.parentNode.childNodes[9].setAttribute('visible', 'true'); //sphere
+						var artifact = this.parentNode.childNodes[7]; //object
+						artifact.setAttribute('position', '0 0 0');
+						this.parentNode.childNodes[1].setAttribute('visible', true); //title
+						this.parentNode.childNodes[3].setAttribute('visible', false); //blurb
+						this.parentNode.childNodes[5].setAttribute('position', '0 0 0'); //pink thing
+						soundFadeOut(this.parentNode.childNodes[11]);
+					}
+				});
+			}
+		});
 	</script>
 
 	<!-- Seed Card -->
