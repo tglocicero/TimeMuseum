@@ -30,27 +30,27 @@ function soundFadeOut(elem){
 }
 
 var activeSP = null;
-var arrID = ["0", "1", "2", "3"];
+//var arrID = ["0", "1", "2", "3"];
 // setup cursor
 AFRAME.registerComponent('cursor-listener', {
 	init: function () {
 		var cursor = document.getElementById("myCursor");
-        var identifier = parseInt(this.el.getAttribute("id", 10));
+//        var identifier = parseInt(this.el.getAttribute("id", 10));
 		this.el.addEventListener('click', function (evt) {
 			cursor.setAttribute('material', 'opacity', 0.8);
 			cursor.setAttribute('geometry', 'primitive:ring; radiusInner: 0.0025; radiusOuter: 0.00375; thetaStart: 0; thetaLength: 360;');
 			cursor.removeAttribute('animation');
-            if(this.className == "button") {
-                for(int i=0; i < 4; i++)
-                    {
-                        var curBut = document.getElementById(arrID[i]);
-                        if(i != identifier) {
-                            curBut.setAttribute("material", "src: #voteClosed");
-                        } else {
-                            curBut.setAttribute("material", "src: #voteThanks");
-                        }
-                    }
-            }
+//            if(this.className == "button") {
+//                for(int i=0; i < 4; i++)
+//                    {
+//                        var curBut = document.getElementById(arrID[i]);
+//                        if(i != identifier) {
+//                            curBut.setAttribute("material", "src: #voteClosed");
+//                        } else {
+//                            curBut.setAttribute("material", "src: #voteThanks");
+//                        }
+//                    }
+//            }
 			if(this.className == "blurb-view-opener"){
 				this.setAttribute('visible', 'false'); //sphere
 				var artifact = this.parentNode.childNodes[7]; //object
