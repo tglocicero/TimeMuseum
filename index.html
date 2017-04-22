@@ -50,19 +50,19 @@
 	<!-- Seed Card -->
 	<div hidden>
 		<div id="seedTitle" visible="true" class="textbox">Programmable Seeds<br><br><br><br></div>
-		<img src="resources/images/SeedPod.jpg" id="seedBlurb" visible="false" style="width:200px;height:160px;"></img>
+		<img src="resources/images/SeedPod.jpg" id="seedBlurb" visible="false" style="width:200px;height:160px;">
 	</div>
 
 	<!-- Carbon Tree Card -->
 	<div hidden>
 		<div id="treeTitle" visible="true" class="textbox">Carbon Tree<br><br><br><br></div>
-		<img src="resources/images/CarbonTree.jpg" id="treeBlurb" visible="false" style="width:100px;height:100px;"></img>
+		<img src="resources/images/CarbonTree.jpg" id="treeBlurb" visible="false" style="width:100px;height:100px;">
 	</div>
 
 	<!-- Nasal Nanobot Card -->
 	<div hidden>
 		<div id="nasalnanobotsTitle" visible="true" class="textbox">Nasal Nanobots<br><br><br><br></div>
-		<img src="resources/images/NasalNanobots.jpg" id="nasalnanobotsBlurb" visible="false" style="width:100px;height:100px;"></img>
+		<img src="resources/images/NasalNanobots.jpg" id="nasalnanobotsBlurb" visible="false" style="width:100px;height:100px;">
 	</div>
 
 	<ar-scene vr-mode-ui>
@@ -168,7 +168,7 @@
 					<a-obj-model id="seedPod" src="#SeedPod-obj" mtl="#SeedPod-mtl" opacity="0"></a-obj-model>
 					<a-sphere opacity="0" class="blurb-view-opener" position="0 0 0" radius="2" color="#FFFAFA"></a-sphere>
 					<a-entity id='seed-sound-player' sound='src: #seed-sound; volume: 5' position= "0 0 0"></a-entity>
-<!--                    <a-plane id="0" class="button" cursor-listener material="src: #voteHere" scale="0.1 0.1 0.1"></a-plane>-->
+                    <a-plane id="0" class="button" cursor-listener material="src: #voteHere" width="1" height="1" ></a-plane>
 				</a-entity>
 			</a-entity>
 
@@ -182,7 +182,7 @@
 					<a-obj-model id="tree" src="#tree-obj" mtl="#tree-mtl" opacity="0"></a-obj-model>
 					<a-sphere opacity="0" class="blurb-view-opener" position="0 0 0" radius="2" color="#FFFAFA"></a-sphere>
 					<a-entity id='tree-sound-player' sound='src: #tree-sound; volume: 5' position= "0 0 0"></a-entity>
-<!--                    <a-plane id="1" class="button" cursor-listener material="src: #voteHere" scale="0.1 0.1 0.1"></a-plane>-->
+<!--                    <a-plane id="1" class="button" cursor-listener material="src: #voteHere" width="1" height="1"></a-plane>-->
 				</a-entity>
 			</a-entity>
 
@@ -196,7 +196,7 @@
 					<a-obj-model id="nasal" src="#nasalnanobots-obj" mtl="#nasalnanobots-mtl" opacity="0"></a-obj-model>
 					<a-sphere opacity="0" class="blurb-view-opener" position="0 0 0" radius="2" color="#FFFAFA"></a-sphere>
 					<a-entity id='nasal-sound-player' sound='src: #nasal-sound; volume: 5' position= "0 0 0"></a-entity>
-<!--                    <a-plane id="2" class="button" cursor-listener material="src: #voteHere" scale="0.1 0.1 0.1"></a-plane>-->
+                    <a-plane id="2" class="button" cursor-listener material="src: #voteHere" width="1" height="1"></a-plane>
 				</a-entity>
 			</a-entity>
 
@@ -210,7 +210,7 @@
 					<a-obj-model id="spray" src="#spray-obj" mtl="#spray-mtl" opacity="0"></a-obj-model>
 					<a-sphere opacity="0" class="blurb-view-opener" position="0 0 0" radius="2" color="#FFFAFA"></a-sphere>
 					<a-entity id='spray-sound-player' sound='src: #spray-sound; volume: 5' position= "0 0 0"></a-entity>
-<!--                    <a-plane id="3" class="button" cursor-listener material="src: #voteHere" scale="0.1 0.1 0.1"></a-plane>-->
+                    <a-plane id="3" class="button" cursor-listener material="src: #voteHere" width="1" height="1"></a-plane>
 				</a-entity>
 			</a-entity>
 
