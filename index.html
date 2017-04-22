@@ -86,6 +86,10 @@
 			<a-asset-item src="resources/models/Inhalable.mtl" id="nasalnanobots-mtl" ></a-asset-item>
 			<a-asset-item src="resources/models/DisplayPaint.obj" id="spray-obj" ></a-asset-item>
 			<a-asset-item src="resources/models/DisplayPaint.mtl" id="spray-mtl" ></a-asset-item>
+            <img id="voteClose" src="resources/images/voteClose.png">
+            <img id="voteHere" src="resources/images/voteHere.png">
+            <img id="voteThanks" src="resources/images/voteThanks.png">
+            
 		</a-assets>
 
 		<a-entity light="type: ambient; color: #CCC" intensity="3"></a-entity>
@@ -162,6 +166,7 @@
 					<a-obj-model id="seedPod" src="#SeedPod-obj" mtl="#SeedPod-mtl" opacity="0"></a-obj-model>
 					<a-sphere opacity="0" class="blurb-view-opener" position="0 0 0" radius="2" color="#FFFAFA"></a-sphere>
 					<a-entity id='seed-sound-player' sound='src: #seed-sound; volume: 5' position= "0 0 0"></a-entity>
+                    <a-plane id="0" class="button" cursor-listener material="src: #voteHere" scale="0.1 0.1 0.1"></a-plane>
 				</a-entity>
 			</a-entity>
 
@@ -175,6 +180,7 @@
 					<a-obj-model id="tree" src="#tree-obj" mtl="#tree-mtl" opacity="0"></a-obj-model>
 					<a-sphere opacity="0" class="blurb-view-opener" position="0 0 0" radius="2" color="#FFFAFA"></a-sphere>
 					<a-entity id='tree-sound-player' sound='src: #tree-sound; volume: 5' position= "0 0 0"></a-entity>
+                    <a-plane id="1" class="button" cursor-listener material="src: #voteHere" scale="0.1 0.1 0.1"></a-plane>
 				</a-entity>
 			</a-entity>
 
@@ -188,6 +194,7 @@
 					<a-obj-model id="nasal" src="#nasalnanobots-obj" mtl="#nasalnanobots-mtl" opacity="0"></a-obj-model>
 					<a-sphere opacity="0" class="blurb-view-opener" position="0 0 0" radius="2" color="#FFFAFA"></a-sphere>
 					<a-entity id='nasal-sound-player' sound='src: #nasal-sound; volume: 5' position= "0 0 0"></a-entity>
+                    <a-plane id="2" class="button" cursor-listener material="src: #voteHere" scale="0.1 0.1 0.1"></a-plane>
 				</a-entity>
 			</a-entity>
 
@@ -201,6 +208,7 @@
 					<a-obj-model id="spray" src="#spray-obj" mtl="#spray-mtl" opacity="0"></a-obj-model>
 					<a-sphere opacity="0" class="blurb-view-opener" position="0 0 0" radius="2" color="#FFFAFA"></a-sphere>
 					<a-entity id='spray-sound-player' sound='src: #spray-sound; volume: 5' position= "0 0 0"></a-entity>
+                    <a-plane id="3" class="button" cursor-listener material="src: #voteHere" scale="0.1 0.1 0.1"></a-plane>
 				</a-entity>
 			</a-entity>
 
