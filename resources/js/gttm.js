@@ -11,22 +11,24 @@
 // 	this.removeAttribute('animation');
 // 	this.removeEventListener("animationcomplete", fadeOutAnimStop);
 // }
-var i, t;
+// var i, t;
+var t;
 
 function soundFadeOut(elem){
 	console.log(elem);
-	i = setInterval(function(){
-		var tmp = Number(elem.components.sound.attrValue.volume)-0.83;
-		elem.components.sound.attrValue.volume = ""+tmp;
-		console.log(elem.components.sound.attrValue.volume);
-	}, 500);
-	t = setTimeout(function(){
-		elem.components.sound.stopSound();
-		clearInterval(i);
-		clearTimeout(t);
-	}, 3000);
+	// i = setInterval(function(){
+	// 	var tmp = Number(elem.components.sound.attrValue.volume)-0.83;
+	// 	elem.components.sound.attrValue.volume = ""+tmp;
+	// 	console.log(elem.components.sound.attrValue.volume);
+	// }, 500);
+	// t = setTimeout(function(){
+	// 	elem.components.sound.stopSound();
+	// 	clearInterval(i);
+	// 	clearTimeout(t);
+	// }, 3000);
 	// elem.setAttribute('animation', 'property:position; from: 0 0 0; to: 0 0 -5; easing: linear; dur: 3000');
 	// elem.addEventListener('animationcomplete', fadeOutAnimStop);
+	elem.components.sound.stopSound();
 }
 
 var activeSP = null;
@@ -41,7 +43,7 @@ AFRAME.registerComponent('cursor-listener', {
 			cursor.setAttribute('geometry', 'primitive:ring; radiusInner: 0.0025; radiusOuter: 0.00375; thetaStart: 0; thetaLength: 360;');
 			cursor.removeAttribute('animation');
             if(this.className == "button") {
-                for(int i=0; i < 4; i++)
+                for(var i=0; i < 4; i++)
                     {
                         var curBut = document.getElementById(arrID[i]);
                         if(i != identifier) {
