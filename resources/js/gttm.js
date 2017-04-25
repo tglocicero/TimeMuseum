@@ -53,7 +53,7 @@ function initRoom(){
 		var set = document.querySelectorAll(".blurb-view-opener");
 		for(var i = 0; i < set.length; i++){
 			set[i].setAttribute("cursor-listener", null);
-			set[i].parentNode.setAttribute('opacity', '1');
+			set[i].parentNode.setAttribute('visible', 'true');
 			set[i].parentNode.childNodes[7].setAttribute('animation', 'property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 5000; easing: linear');
 		}
 	}, 50);
