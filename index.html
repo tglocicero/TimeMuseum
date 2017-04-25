@@ -19,8 +19,31 @@
 	<title>GA Tech Time Museum</title>
 </head>
 
+<style type="text/css">
+	.textbox {
+
+		    width: 275px;
+		    border: solid 1px #ccc;
+		    height: 26px;
+		    background: #5E768D;
+		    background: -moz-linear-gradient(top, #546A7F 0%, #5E768D 20%);
+		    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#546A7F), color-stop(20%,#5E768D));
+		    border-radius: 5px;
+		    -moz-border-radius: 5px;
+		    -webkit-border-radius: 5px;
+		    -moz-box-shadow: 0px 1px 0px #f2f2f2;
+		    -webkit-box-shadow: 0px 1px 0px #F2F2F2;
+		    font-family: sans-serif;
+		    /*font-size: 16px;*/
+		    color: #F2F2F2;
+		    text-transform: uppercase;
+		    text-shadow: 0px -1px 0px #334F71;
+		} 
+</style>
+
 <body>
 	<script>
+
 		var t;
 
 		function soundFadeOut(elem){
@@ -215,10 +238,10 @@
 		<a-sphere id="room" src ="#roomPano" radius="25" opacity="0" side="double">
 
 		<!-- axis orientation spheres -->
-		<a-sphere position="0 0 0" radius=".03" color="#ffff00"></a-sphere>
+		<!-- <a-sphere position="0 0 0" radius=".03" color="#ffff00"></a-sphere>
 		<a-sphere position="5 0 0" radius=".03" color="#ff0000"></a-sphere>
 		<a-sphere position="0 5 0" radius=".03" color="#00ff00"></a-sphere>
-		<a-sphere position="0 0 5" radius=".03" color="#0000ff"></a-sphere>
+		<a-sphere position="0 0 5" radius=".03" color="#0000ff"></a-sphere> -->
 
 			<!-- Seed Artifact -->
 			<a-entity position="4.64 0 -14.3" rotation="0 -90 0">
