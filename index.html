@@ -65,7 +65,7 @@
 					if(this.className == "blurb-view-opener"){
 						this.setAttribute('visible', 'false'); //sphere
 						var artifact = this.parentNode.childNodes[7]; //object
-						artifact.setAttribute('position', '-1 0 8');
+						artifact.setAttribute('position', '-3 0 8');
 						this.parentNode.childNodes[1].setAttribute('visible', false); //title
 						this.parentNode.childNodes[3].setAttribute('visible', true); //blurb
 						this.parentNode.childNodes[5].setAttribute('position', '0 0 10'); //pink thing
@@ -226,7 +226,7 @@
 					<a-entity id="seedTitleCSS" css-object="div: #seedTitle" scale="0.08 0.08 0.08" position="0 0 0"></a-entity>  
 					<a-box id="seedBlurbCSS" css-object="div: #seedBlurb" scale=".02 .02 .02" position="5 0 0" visible='false'></a-box>
 					<a-box opacity=".2" id="seedMouseBox" cursor-listener class="blurb-view-closer"
-					color='#BB00FF' height="2" width="3" depth="0"></a-box>
+					color='#BB00FF' height="2.5" width="3" depth="0" position="-2 0 0"></a-box>
 					<a-obj-model id="seedPod" src="#SeedPod-obj" mtl="#SeedPod-mtl" opacity="0"></a-obj-model>
 					<a-sphere opacity="0" class="blurb-view-opener" position="0 0 0" radius="2" color="#FFFAFA"></a-sphere>
 					<a-entity id='seed-sound-player' sound='src: #seed-sound; volume: 5'></a-entity>
